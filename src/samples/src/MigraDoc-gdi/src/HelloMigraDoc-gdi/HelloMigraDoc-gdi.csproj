@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <LangVersion>11.0</LangVersion>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\MigraDoc\src\HelloMigraDoc\Charts.cs" Link="Charts.cs" />
+    <Compile Include="..\..\..\MigraDoc\src\HelloMigraDoc\Cover.cs" Link="Cover.cs" />
+    <Compile Include="..\..\..\MigraDoc\src\HelloMigraDoc\Documents.cs" Link="Documents.cs" />
+    <Compile Include="..\..\..\MigraDoc\src\HelloMigraDoc\FillerText.cs" Link="FillerText.cs" />
+    <Compile Include="..\..\..\MigraDoc\src\HelloMigraDoc\Paragraphs.cs" Link="Paragraphs.cs" />
+    <Compile Include="..\..\..\MigraDoc\src\HelloMigraDoc\Program.cs" Link="Program.cs" />
+    <Compile Include="..\..\..\MigraDoc\src\HelloMigraDoc\Styles.cs" Link="Styles.cs" />
+    <Compile Include="..\..\..\MigraDoc\src\HelloMigraDoc\TableOfContents.cs" Link="TableOfContents.cs" />
+    <Compile Include="..\..\..\MigraDoc\src\HelloMigraDoc\Tables.cs" Link="Tables.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PDFsharp-MigraDoc-gdi" />
+  </ItemGroup>
+
+</Project>

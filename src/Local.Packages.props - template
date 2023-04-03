@@ -1,0 +1,8 @@
+﻿<Project>
+
+  <PropertyGroup>
+    <!--<PDFsharp_PackageVersion>6.0.0-dev-mddom-nullability.288</PDFsharp_PackageVersion>-->
+    <PDFsharp_PackageVersion>Put your local version number here</PDFsharp_PackageVersion>
+  </PropertyGroup>
+
+</Project>

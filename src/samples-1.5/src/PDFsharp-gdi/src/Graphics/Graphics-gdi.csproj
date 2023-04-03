@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <DefineConstants>GDI</DefineConstants>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\PDFsharp\src\Graphics\Base.cs" Link="Base.cs" />
+    <Compile Include="..\..\..\PDFsharp\src\Graphics\Images.cs" Link="Images.cs" />
+    <Compile Include="..\..\..\PDFsharp\src\Graphics\LinesAndCurves.cs" Link="LinesAndCurves.cs" />
+    <Compile Include="..\..\..\PDFsharp\src\Graphics\Paths.cs" Link="Paths.cs" />
+    <Compile Include="..\..\..\PDFsharp\src\Graphics\Program.cs" Link="Program.cs" />
+    <Compile Include="..\..\..\PDFsharp\src\Graphics\Shapes.cs" Link="Shapes.cs" />
+    <Compile Include="..\..\..\PDFsharp\src\Graphics\Text.cs" Link="Text.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PDFsharp-gdi" />
+  </ItemGroup>
+
+</Project>
