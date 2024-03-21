@@ -1,11 +1,11 @@
 // PDFsharp - A .NET library for processing PDF
 // See the LICENSE file in the solution root for more information.
 
-using System.Diagnostics;
 using PdfSharp;
 using PdfSharp.Drawing;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
+using PdfSharp.Quality;
 using PdfSharp.Snippets.Font;
 
 namespace Bookmarks
@@ -51,10 +51,10 @@ namespace Bookmarks
             }
 
             // Save the document...
-            const string filename = "Bookmarks_tempfile.pdf";
+            string filename = PdfFileUtility.GetTempPdfFullFileName("samples-1.5/Bookmarks");
             document.Save(filename);
             // ...and start a viewer.
-            Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+            PdfFileUtility.ShowDocument(filename);
         }
     }
 }

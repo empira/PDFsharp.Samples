@@ -3,6 +3,7 @@
 
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.Rendering;
+using PdfSharp.Quality;
 
 namespace HelloMigraDoc
 {
@@ -18,7 +19,7 @@ namespace HelloMigraDoc
             var paragraph = section.AddParagraph();
             paragraph.Format.SpaceAfter = "3cm";
 
-            var image = section.AddImage("../../../../../../../../../assets/migradoc/images/MigraDoc-landscape.png");
+            var image = section.AddImage(IOUtility.GetAssetsPath("migradoc/images/MigraDoc-landscape.png")!);
             image.Width = "10cm";
 
             paragraph = section.AddParagraph("A sample document that demonstrates the\ncapabilities of ");
@@ -31,9 +32,9 @@ namespace HelloMigraDoc
             paragraph = section.AddParagraph("Rendering date: ");
             paragraph.AddDateField();
 
-            paragraph = section.AddParagraph($"Version: {MigraDocRenderingBuildInformation.GitSemVer}");
-            paragraph = section.AddParagraph($"Branch: {MigraDocRenderingBuildInformation.BranchName}");
-            paragraph = section.AddParagraph($"Assembly: {MigraDocRenderingBuildInformation.AssemblyTitle}");
+            _ = section.AddParagraph($"Version: {MigraDocRenderingBuildInformation.GitSemVer}");
+            _ = section.AddParagraph($"Branch: {MigraDocRenderingBuildInformation.BranchName}");
+            _ = section.AddParagraph($"Assembly: {MigraDocRenderingBuildInformation.AssemblyTitle}");
             paragraph = section.AddParagraph($"Platform: ");
             var platform = MigraDocRenderingBuildInformation.TargetPlatform;
             if (String.IsNullOrEmpty(platform))

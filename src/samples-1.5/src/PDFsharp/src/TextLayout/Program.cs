@@ -1,12 +1,12 @@
 // PDFsharp - A .NET library for processing PDF
 // See the LICENSE file in the solution root for more information.
 
-using System.Diagnostics;
 using PdfSharp;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Fonts;
+using PdfSharp.Quality;
 using PdfSharp.Snippets.Font;
 
 namespace TextLayout
@@ -25,7 +25,9 @@ namespace TextLayout
             if (Capabilities.Build.IsCoreBuild)
                 GlobalFontSettings.FontResolver = new FailsafeFontResolver();
 
-            const string filename = "TextLayout_tempfile.pdf";
+            string filename = PdfFileUtility.GetTempPdfFullFileName("samples-1.5/TextLayout");
+
+            // Note: Text does not fit using Core build and Segoe WP font.
 
             // ReSharper disable StringLiteralTypo
 #if true
@@ -67,8 +69,8 @@ namespace TextLayout
 
             var page = document.AddPage();
             var gfx = XGraphics.FromPdfPage(page);
-            //var font = new XFont("Times New Roman", 10, XFontStyleEx.Bold);
-            var font = new XFont("Segoe WP", 10, XFontStyleEx.Bold);
+            var font = new XFont("Times New Roman", 10, XFontStyleEx.Bold);
+            //var font = new XFont("Segoe WP", 10, XFontStyleEx.Bold);
             var tf = new XTextFormatter(gfx);
 
             var rect = new XRect(40, 100, 250, 232);
@@ -94,7 +96,7 @@ namespace TextLayout
             // Save the document...
             document.Save(filename);
             // ...and start a viewer.
-            Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+            PdfFileUtility.ShowDocument(filename);
         }
     }
 }

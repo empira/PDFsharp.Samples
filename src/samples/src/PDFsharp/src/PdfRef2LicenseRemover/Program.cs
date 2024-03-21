@@ -18,6 +18,7 @@
   ===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===
 */
 
+using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 
 // You need a copy of the ISO 32000 PDF to run this program.
@@ -25,8 +26,18 @@ const string folder = @"C:\Users\StLa\Desktop\PDFsharp\";
 const string file = "ISO_32000-2_2020(en).pdf";
 const string fileNew = "ISO_32000-2_2020(en)-no-license-info.pdf";
 
-// Open file for editing.
-var document = PdfReader.Open(Path.Combine(folder, file), PdfDocumentOpenMode.Modify);
+PdfDocument document = default!;
+try
+{
+    // Open file for editing.
+    document = PdfReader.Open(Path.Combine(folder, file), PdfDocumentOpenMode.Modify);
+}
+catch (Exception ex)
+{
+    Console.WriteLine("You need a copy of the ISO 32000 PDF to run this program.");
+    Console.WriteLine(ex.Message);
+    Environment.Exit(-1);
+}
 
 // Remove additional content streams on every page.
 foreach (var page in document.Pages)

@@ -6,6 +6,7 @@ using PdfSharp;
 using PdfSharp.Drawing;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
+using PdfSharp.Quality;
 using PdfSharp.Snippets.Font;
 
 namespace XForms
@@ -26,8 +27,8 @@ namespace XForms
             var document = new PdfDocument();
 
             // Create a font.
-            //var font = new XFont("Verdana", 16);
-            var font = new XFont("Segoe WP", 20, XFontStyleEx.BoldItalic);
+            var font = new XFont("Verdana", 16);
+            //var font = new XFont("Segoe WP", 20, XFontStyleEx.BoldItalic);
 
             // Create a new page.
             var page = document.AddPage();
@@ -64,14 +65,13 @@ namespace XForms
             // ... raster images like PNG files.
             XGraphicsState state = formGfx.Save();
             formGfx.RotateAtTransform(17, new XPoint(30, 30));
-            //formGfx.DrawImage(XImage.FromFile("../../../../../../../../../assets/archives/samples-1.5/images/Test.gif"), 20, 20);
-            formGfx.DrawImage(XImage.FromFile("../../../../../../../../../assets/archives/samples-1.5/images/Test.png"), 20, 20);
+            formGfx.DrawImage(XImage.FromFile(IOUtility.GetAssetsPath("archives/samples-1.5/images/Test.png")!), 20, 20);
             formGfx.Restore(state);
 
             // ... and forms like XPdfForm objects.
             state = formGfx.Save();
             formGfx.RotateAtTransform(-8, new XPoint(165, 115));
-            formGfx.DrawImage(XPdfForm.FromFile("../../../../../../../../../assets/archives/samples-1.5/PDFs/SomeLayout.pdf"), new XRect(140, 80, 50, 50 * Math.Sqrt(2)));
+            formGfx.DrawImage(XPdfForm.FromFile(IOUtility.GetAssetsPath("archives/samples-1.5/PDFs/SomeLayout.pdf")!), new XRect(140, 80, 50, 50 * Math.Sqrt(2)));
             formGfx.Restore(state);
 
             // When you finished drawing on the form, dispose the XGraphic object.
@@ -96,10 +96,10 @@ namespace XForms
 #endif
 
             // Save the document...
-            const string filename = "XForms_tempfile.pdf";
+            string filename = PdfFileUtility.GetTempPdfFullFileName("samples-1.5/XForms");
             document.Save(filename);
             // ...and start a viewer.
-            Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+            PdfFileUtility.ShowDocument(filename);
         }
     }
 }

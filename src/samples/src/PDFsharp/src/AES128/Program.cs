@@ -12,9 +12,9 @@ using PdfSharp.Pdf;
 using PdfSharp;
 using PdfSharp.Pdf.IO;
 using PdfSharp.Snippets.Font;
-using System.Diagnostics;
 using PdfSharp.Diagnostics;
 using PdfSharp.Pdf.Security;
+using PdfSharp.Quality;
 
 // NET6FIX - will be removed
 if (Capabilities.Build.IsCoreBuild)
@@ -46,10 +46,9 @@ var securityHandler = document.SecurityHandler ?? NRT.ThrowOnNull<PdfStandardSec
 securityHandler.SetEncryptionToV4UsingAES();
 
 // Save the document...
-var filename = "AES128_tempfile.pdf";
+var filename = PdfFileUtility.GetTempPdfFullFileName("samples-PDFsharp/AES128");
 document.Save(filename);
-// ...and start a viewer.
-Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+PdfFileUtility.ShowDocument(filename);
 
 // ===================================
 // Part 2 - Open an encrypted PDF file
@@ -67,7 +66,6 @@ gfx.DrawString("2nd page", font, XBrushes.Black,
     new XRect(0, 0, page.Width, page.Height), XStringFormats.Center);
 
 // Save the document with new name...
-filename = "AES128-unprotected_tempfile.pdf";
+filename = PdfFileUtility.GetTempPdfFullFileName("samples-PDFsharp/AES128-unprotected");
 document.Save(filename);
-// ...and start a viewer.
-Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+PdfFileUtility.ShowDocument(filename);

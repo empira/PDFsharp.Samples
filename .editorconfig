@@ -1,5 +1,8 @@
 ﻿[*.{cs,vb}]
 
+# 2024-02-23: I noticed that Visual studio started to think my source code is written in German 😲
+spelling_languages = en-us
+
 # IDE0049: Simplify Names
 dotnet_style_predefined_type_for_locals_parameters_members = false:silent
 

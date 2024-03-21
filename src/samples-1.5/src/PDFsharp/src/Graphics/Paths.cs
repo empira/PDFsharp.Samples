@@ -111,14 +111,12 @@ namespace Graphics
         {
             BeginBox(gfx, number, "Draw Glyphs");
 
-            var path = new XGraphicsPath();
-            //path.AddString("Hello!", new XFontFamily("Times New Roman"), XFontStyleEx.BoldItalic, 100, new XRect(0, 0, 250, 140),
-
             var family = new XFontFamily("Times New Roman");
             if (Capabilities.IsAvailable.GlyphsToPathFrom(family))
             {
+                var path = new XGraphicsPath();
                 path.AddString("Hello!", family, XFontStyleEx.BoldItalic, 80, new XRect(0, 0, 250, 140),
-                  XStringFormats.Center);
+                    XStringFormats.Center);
 
                 gfx.DrawPath(new XPen(XColors.Purple, 2.3), XBrushes.DarkOrchid, path);
             }
@@ -137,12 +135,10 @@ namespace Graphics
         {
             BeginBox(gfx, number, "Clip through Path");
 
-            var path = new XGraphicsPath();
-            //path.AddString("Clip!", new XFontFamily("Verdana"), XFontStyleEx.Bold, 90, new XRect(0, 0, 250, 140),
-
             var family = new XFontFamily("Verdana");
             if (Capabilities.IsAvailable.GlyphsToPathFrom(family))
             {
+                var path = new XGraphicsPath();
                 path.AddString("Clip!", new XFontFamily("Verdana"), XFontStyleEx.Bold, 90, new XRect(0, 0, 250, 140),
                     XStringFormats.Center);
                 gfx.IntersectClip(path);

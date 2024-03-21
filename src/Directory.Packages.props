@@ -3,16 +3,16 @@
   <Import Condition="Exists('Local.Packages.props')" Project="$([MSBuild]::GetPathOfFileAbove('Local.Packages.props', '$(MSBuildThisFileDirectory)'))" />
 
   <PropertyGroup>
-    <PDFsharp_PackageVersion Condition=" '$(PDFsharp_PackageVersion)'=='' ">6.0.0</PDFsharp_PackageVersion>
+    <PDFsharp_PackageVersion Condition=" '$(PDFsharp_PackageVersion)'=='' ">6.1.0-preview-2</PDFsharp_PackageVersion>
     <NetCore_PackageVersion>6.0.0</NetCore_PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
 
     <!-- PDFsharp packages -->
-    <PackageVersion Include="PdfSharp" Version="$(PDFsharp_PackageVersion)" />
-    <PackageVersion Include="PdfSharp-GDI" Version="$(PDFsharp_PackageVersion)" />
-    <PackageVersion Include="PdfSharp-WPF" Version="$(PDFsharp_PackageVersion)" />
+    <PackageVersion Include="PDFsharp" Version="$(PDFsharp_PackageVersion)" />
+    <PackageVersion Include="PDFsharp-GDI" Version="$(PDFsharp_PackageVersion)" />
+    <PackageVersion Include="PDFsharp-WPF" Version="$(PDFsharp_PackageVersion)" />
     <PackageVersion Include="PDFsharp-MigraDoc" Version="$(PDFsharp_PackageVersion)" />
     <PackageVersion Include="PDFsharp-MigraDoc-GDI" Version="$(PDFsharp_PackageVersion)" />
     <PackageVersion Include="PDFsharp-MigraDoc-WPF" Version="$(PDFsharp_PackageVersion)" />

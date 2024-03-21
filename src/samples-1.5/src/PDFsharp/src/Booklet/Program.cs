@@ -1,10 +1,13 @@
 // PDFsharp - A .NET library for processing PDF
 // See the LICENSE file in the solution root for more information.
 
-using System.Diagnostics;
+#if WPF
+using System.IO;
+#endif
 using PdfSharp;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
+using PdfSharp.Quality;
 
 // By courtesy of Peter Berndts 
 
@@ -21,7 +24,7 @@ namespace Booklet
         {
             // Get a fresh copy of the sample PDF file
             string filename = "Portable Document Format.pdf";
-            File.Copy(Path.Combine("../../../../../../../../../assets/archives/samples-1.5/PDFs", filename),
+            File.Copy(Path.Combine(IOUtility.GetAssetsPath("archives/samples-1.5/PDFs")!, filename),
               Path.Combine(Directory.GetCurrentDirectory(), filename), true);
 
             // Create the output document.
@@ -111,10 +114,10 @@ namespace Booklet
             }
 
             // Save the document...
-            filename = "Booklet_tempfile.pdf";
+            filename = PdfFileUtility.GetTempPdfFullFileName("samples-1.5/Booklet");
             outputDocument.Save(filename);
             // ...and start a viewer.
-            Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+            PdfFileUtility.ShowDocument(filename);
         }
     }
 }

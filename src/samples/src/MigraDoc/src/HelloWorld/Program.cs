@@ -1,7 +1,6 @@
 ﻿// MigraDoc - Creating Documents on the Fly
 // See the LICENSE file in the solution root for more information.
 
-using System.Diagnostics;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Fields;
 using MigraDoc.Rendering;
@@ -32,10 +31,10 @@ var pdfRenderer = new PdfDocumentRenderer
 pdfRenderer.RenderDocument();
 
 // Save the document...
-var filename = IOHelper.CreateTemporaryPdfFileName("HelloWorldMigraDoc");
+var filename = PdfFileUtility.GetTempPdfFullFileName("samples-MigraDoc/HelloWorldMigraDoc");
 pdfRenderer.PdfDocument.Save(filename);
 // ...and start a viewer.
-Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+PdfFileUtility.ShowDocument(filename);
 
 // Creates a minimalistic document.
 static Document CreateDocument()
@@ -64,8 +63,8 @@ static Document CreateDocument()
     paragraph.Format.Alignment = ParagraphAlignment.Center;
 
     // Add MigraDoc logo.
-    const string imagePath = @"..\..\..\..\..\..\..\..\..\assets\migradoc\images\MigraDoc-128x128.png";
-    var logo = document.LastSection.AddImage(imagePath);
+    string imagePath = IOUtility.GetAssetsPath(@"migradoc\images\MigraDoc-128x128.png")!;
+    document.LastSection.AddImage(imagePath);
 
     return document;
 }

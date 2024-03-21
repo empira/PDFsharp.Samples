@@ -1,10 +1,10 @@
 // PDFsharp - A .NET library for processing PDF
 // See the LICENSE file in the solution root for more information.
 
-using System.Diagnostics;
 using PdfSharp;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
+using PdfSharp.Quality;
 using PdfSharp.Snippets.Font;
 
 namespace Graphics
@@ -21,7 +21,7 @@ namespace Graphics
                 GlobalFontSettings.FontResolver = new FailsafeFontResolver();
 
             // Create a temporary file.
-            string filename = $"{Guid.NewGuid().ToString("D").ToUpper()}_tempfile.pdf";
+            string filename = PdfFileUtility.GetTempPdfFullFileName("samples-1.5/Graphics");
             s_document = new PdfDocument();
             s_document.Info.Title = "PDFsharp XGraphic Sample";
             s_document.Info.Author = "Stefan Lange";
@@ -38,7 +38,7 @@ namespace Graphics
             // Save the s_document...
             s_document.Save(filename);
             // ...and start a viewer.
-            Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+            PdfFileUtility.ShowDocument(filename);
         }
 
         // ReSharper disable once InconsistentNaming

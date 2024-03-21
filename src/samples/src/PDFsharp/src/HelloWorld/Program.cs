@@ -6,6 +6,7 @@ using PdfSharp;
 using PdfSharp.Drawing;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
+using PdfSharp.Quality;
 using PdfSharp.Snippets.Font;
 
 // NET6FIX - will be removed
@@ -19,6 +20,7 @@ document.Info.Subject = "Just a simple Hello-World program.";
 
 // Create an empty page in this document.
 var page = document.AddPage();
+//page.Size = PageSize.Letter;
 
 // Get an XGraphics object for drawing on this page.
 var gfx = XGraphics.FromPdfPage(page);
@@ -41,7 +43,7 @@ gfx.DrawString("Hello, PDFsharp!", font, XBrushes.Black,
     new XRect(0, 0, page.Width, page.Height), XStringFormats.Center);
 
 // Save the document...
-var filename = "HelloWorld_tempfile.pdf";
+var filename = PdfFileUtility.GetTempPdfFullFileName("samples/HelloWorldSample");
 document.Save(filename);
 // ...and start a viewer.
-Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+PdfFileUtility.ShowDocument(filename);

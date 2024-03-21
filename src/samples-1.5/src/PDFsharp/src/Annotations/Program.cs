@@ -1,12 +1,12 @@
 // PDFsharp - A .NET library for processing PDF
 // See the LICENSE file in the solution root for more information.
 
-using System.Diagnostics;
 using PdfSharp;
 using PdfSharp.Drawing;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.Annotations;
+using PdfSharp.Quality;
 using PdfSharp.Snippets.Font;
 
 namespace Annotations
@@ -73,7 +73,7 @@ namespace Annotations
             page.Annotations.Add(textAnnot);
 
 
-            // Create a so called rubber stamp annotation. I'm not sure if it is useful, but at least
+            // Create a so-called rubber stamp annotation. I'm not sure if it is useful, but at least
             // it looks impressive...
             var rsAnnot = new PdfRubberStampAnnotation
             {
@@ -93,10 +93,10 @@ namespace Annotations
             // If you need one of them, feel encouraged to implement it. It is quite easy.
 
             // Save the document...
-            const string filename = "Annotations_tempfile.pdf";
+            var filename = PdfFileUtility.GetTempPdfFullFileName("samples-1.5/Annotations");
             document.Save(filename);
             // ...and start a viewer.
-            Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+            PdfFileUtility.ShowDocument(filename);
         }
     }
 }

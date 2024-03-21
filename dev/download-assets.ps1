@@ -1,4 +1,7 @@
-# Downloads assets
+# Downloads assets.
+
+# This file downloads assets required to compile the PDFsharp/MigraDoc samples source codes.
+# This file runs under PowerShell Core 7.0 or higher.
 
 #Requires -Version 7
 #Requires -PSEdition Core
@@ -22,6 +25,11 @@ if (test-path -PathType container $destination) {
 }
 New-Item -ItemType Directory -Path $destination
 
+# Download assets version.
+$url = $source + ".assets-version"
+$dest = $destination + ".assets-version"
+Invoke-WebRequest $url -OutFile $dest
+
 foreach ($asset in $assetList) {
     $url = $source + $asset
     $dest = $destination + $asset
@@ -29,13 +37,13 @@ foreach ($asset in $assetList) {
     $folder = [IO.Path]::GetDirectoryName($dest)
     New-Item -ItemType Directory -Path $folder -Force
 
-    $x = Invoke-WebRequest $url -OutFile $dest
+    Invoke-WebRequest $url -OutFile $dest
 
     $idx = $asset.LastIndexOf("/")
     $assetFolder = $asset.Substring(0, $idx)
-    $zip = $asset.Substring($idx + 1)
+    # $zip = $asset.Substring($idx + 1)
     Expand-Archive "$destination/$asset" -DestinationPath "$destination/$assetFolder" -Force
-    if ($LASTEXITCODE -eq 0) {
+    if ($True -or $LASTEXITCODE -eq 0) {
         Remove-Item "$destination/$asset"
         # Not all ZIP files contain compress.ps1. Suppress error messages.
         Remove-Item "$destination/$assetFolder/compress.ps1" -ErrorAction Ignore

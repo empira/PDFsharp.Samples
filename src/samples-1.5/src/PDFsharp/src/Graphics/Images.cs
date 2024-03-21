@@ -3,6 +3,7 @@
 
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
+using PdfSharp.Quality;
 
 namespace Graphics
 {
@@ -11,11 +12,11 @@ namespace Graphics
     /// </summary>
     public class Images : Base
     {
-        const string jpegSamplePath = "../../../../../../../../../assets/archives/samples-1.5/images/Z3.jpg";
-        const string gifSamplePath = "../../../../../../../../../assets/archives/samples-1.5/images/Test.gif";
-        const string pngSamplePath = "../../../../../../../../../assets/archives/samples-1.5/images/Test.png";
-        const string tiffSamplePath = "../../../../../../../../../assets/archives/samples-1.5/images/Rose (RGB 8).tif";
-        const string pdfSamplePath = "../../../../../../../../../assets/archives/samples-1.5/PDFs/SomeLayout.pdf";
+        readonly string _jpegSamplePath = IOUtility.GetAssetsPath("archives/samples-1.5/images/Z3.jpg")!;
+        readonly string _gifSamplePath = IOUtility.GetAssetsPath("archives/samples-1.5/images/Test.gif")!;
+        readonly string _pngSamplePath = IOUtility.GetAssetsPath("archives/samples-1.5/images/Test.png")!;
+        readonly string _tiffSamplePath = IOUtility.GetAssetsPath("archives/samples-1.5/images/Rose (RGB 8).tif")!;
+        readonly string _pdfSamplePath = IOUtility.GetAssetsPath("archives/samples-1.5/PDFs/SomeLayout.pdf")!;
 
         public void DrawPage(PdfPage page)
         {
@@ -28,9 +29,13 @@ namespace Graphics
             DrawImageRotated(gfx, 3);
             DrawImageSheared(gfx, 4);
             // NET6HACK
-            //DrawGif(gfx, 5);
+#if !CORE
+            DrawGif(gfx, 5);
+#endif
             DrawPng(gfx, 6);
-            //DrawTiff(gfx, 7);
+#if !CORE
+            DrawTiff(gfx, 7);
+#endif
             DrawFormXObject(gfx, 8);
         }
 
@@ -41,7 +46,7 @@ namespace Graphics
         {
             BeginBox(gfx, number, "DrawImage (original)");
 
-            var image = XImage.FromFile(jpegSamplePath);
+            var image = XImage.FromFile(_jpegSamplePath);
 
             // Left position in point
             double x = (250 - image.PixelWidth * 72 / image.HorizontalResolution) / 2;
@@ -57,7 +62,7 @@ namespace Graphics
         {
             BeginBox(gfx, number, "DrawImage (scaled)");
 
-            var image = XImage.FromFile(jpegSamplePath);
+            var image = XImage.FromFile(_jpegSamplePath);
             gfx.DrawImage(image, 0, 0, 250, 140);
 
             EndBox(gfx);
@@ -70,7 +75,7 @@ namespace Graphics
         {
             BeginBox(gfx, number, "DrawImage (rotated)");
 
-            var image = XImage.FromFile(jpegSamplePath);
+            var image = XImage.FromFile(_jpegSamplePath);
 
             const double dx = 250, dy = 140;
 
@@ -96,7 +101,7 @@ namespace Graphics
         {
             BeginBox(gfx, number, "DrawImage (sheared)");
 
-            var image = XImage.FromFile(jpegSamplePath);
+            var image = XImage.FromFile(_jpegSamplePath);
 
             const double dx = 250, dy = 140;
 
@@ -129,7 +134,7 @@ namespace Graphics
             BorderPen = new XPen(XColor.FromArgb(202, 121, 74), BorderWidth);
             BeginBox(gfx, number, "DrawImage (GIF)");
 
-            var image = XImage.FromFile(gifSamplePath);
+            var image = XImage.FromFile(_gifSamplePath);
 
             const double dx = 250, dy = 140;
 
@@ -148,7 +153,7 @@ namespace Graphics
         {
             BeginBox(gfx, number, "DrawImage (PNG)");
 
-            var image = XImage.FromFile(pngSamplePath);
+            var image = XImage.FromFile(_pngSamplePath);
 
             const double dx = 250, dy = 140;
 
@@ -169,7 +174,7 @@ namespace Graphics
             BackColor = XColors.LightGoldenrodYellow;
             BeginBox(gfx, number, "DrawImage (TIFF)");
 
-            var image = XImage.FromFile(tiffSamplePath);
+            var image = XImage.FromFile(_tiffSamplePath);
 
             const double dx = 250, dy = 140;
 
@@ -190,7 +195,7 @@ namespace Graphics
             //this.backColor = XColors.LightSalmon;
             BeginBox(gfx, number, "DrawImage (Form XObject)");
 
-            var image = XImage.FromFile(pdfSamplePath);
+            var image = XImage.FromFile(_pdfSamplePath);
 
             const double dx = 250, dy = 140;
 
