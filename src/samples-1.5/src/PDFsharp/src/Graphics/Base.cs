@@ -58,9 +58,9 @@ namespace Graphics
             font = new XFont("Verdana", 8);
             //font = new XFont("Segoe WP", 8);
             format.Alignment = XStringAlignment.Center;
-            gfx.DrawString(Program.s_document.PageCount.ToString(), font, XBrushes.DarkOrchid, rect, format);
+            gfx.DrawString(Program.Document.PageCount.ToString(), font, XBrushes.DarkOrchid, rect, format);
 
-            Program.s_document.Outlines.Add(title, page, true);
+            Program.Document.Outlines.Add(title, page, true);
         }
 
         /// <summary>

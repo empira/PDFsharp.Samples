@@ -1,13 +1,9 @@
 // PDFsharp - A .NET library for processing PDF
 // See the LICENSE file in the solution root for more information.
 
-using System.Diagnostics;
-using PdfSharp;
 using PdfSharp.Drawing;
-using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Quality;
-using PdfSharp.Snippets.Font;
 
 namespace XForms
 {
@@ -19,16 +15,13 @@ namespace XForms
     {
         static void Main()
         {
-            // NET6FIX
-            if (Capabilities.Build.IsCoreBuild)
-                GlobalFontSettings.FontResolver = new FailsafeFontResolver();
-
             // Create a new PDF document.
             var document = new PdfDocument();
+            document.PageLayout = PdfPageLayout.SinglePage;
+            document.ViewerPreferences.FitWindow = true;
 
             // Create a font.
-            var font = new XFont("Verdana", 16);
-            //var font = new XFont("Segoe WP", 20, XFontStyleEx.BoldItalic);
+            var font = new XFont("Arial", 16);
 
             // Create a new page.
             var page = document.AddPage();
@@ -54,7 +47,7 @@ namespace XForms
             // On a form you can draw...
 
             // ... text
-            formGfx.DrawString("Text, Graphics, Images, and Forms", new XFont("Verdana", 10, XFontStyleEx.Regular), XBrushes.Navy, 3, 0, XStringFormats.TopLeft);
+            formGfx.DrawString("Text, Graphics, Images, and Forms", new XFont("Arial", 10, XFontStyleEx.Regular), XBrushes.Navy, 3, 0, XStringFormats.TopLeft);
             //formGfx.DrawString("Text, Graphics, Images, and Forms", new XFont("Segoe WP", 10, XFontStyleEx.Regular), XBrushes.Navy, 3, 0, XStringFormats.TopLeft);
             var pen = XPens.LightBlue.Clone();
             pen.Width = 2.5;

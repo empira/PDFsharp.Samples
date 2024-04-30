@@ -36,8 +36,7 @@ namespace Booklet
             //  divided by 4, the first pages of the output document will
             //  each contain only one page from the source document.)
             outputDocument.PageLayout = PdfPageLayout.SinglePage;
-
-            XGraphics gfx;
+            outputDocument.ViewerPreferences.FitWindow = true;
 
             // Open the external document as XPdfForm object.
             var form = XPdfForm.FromFile(filename);
@@ -60,12 +59,12 @@ namespace Booklet
                 // Add a new page to the output document.
                 var page = outputDocument.AddPage();
                 page.Orientation = PageOrientation.Landscape;
-                page.Width = 2 * extWidth;
-                page.Height = extHeight;
-                double width = page.Width;
-                double height = page.Height;
+                page.Width = XUnitPt.FromPoint(2 * extWidth);
+                page.Height = XUnitPt.FromPoint(extHeight);
+                double width = page.Width.Point;
+                double height = page.Height.Point;
 
-                gfx = XGraphics.FromPdfPage(page);
+                var gfx = XGraphics.FromPdfPage(page);
 
                 // Skip if left side has to remain blank.
                 XRect box;
@@ -89,8 +88,8 @@ namespace Booklet
                 // Back page of a sheet.
                 page = outputDocument.AddPage();
                 page.Orientation = PageOrientation.Landscape;
-                page.Width = 2 * extWidth;
-                page.Height = extHeight;
+                page.Width = XUnitPt.FromPoint(2 * extWidth);
+                page.Height = XUnitPt.FromPoint( extHeight);
 
                 gfx = XGraphics.FromPdfPage(page);
 

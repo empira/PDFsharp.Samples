@@ -1,21 +1,13 @@
 ﻿// PDFsharp - A .NET library for processing PDF
 // See the LICENSE file in the solution root for more information.
 
-using PdfSharp;
 using PdfSharp.Drawing;
 using PdfSharp.Fonts;
-using PdfSharp.Fonts.Internal;
-using PdfSharp.Pdf;
 using PdfSharp.Quality;
-using PdfSharp.Snippets.Font;
 
 const string programName = "samples-PDFsharp/RenderEvents";
 
-// http://localhost:8093/PDFsharp/Topics/Drawing/RenderEvents.html  #CHECK_BEFORE_RELEASE
-
-// NET6FIX - will be removed
-if (Capabilities.Build.IsCoreBuild)
-    GlobalFontSettings.FontResolver = new FailsafeFontResolver();
+// http://localhost:8094/PDFsharp/Topics/Drawing/RenderEvents.html  #CHECK_BEFORE_RELEASE
 
 var document = PdfDocUtility.CreateNewPdfDocument(); // ("Render events")
 var page = document.AddPage();  // PdfDocTools.AddPageAndGetGraphics(Render...
@@ -27,7 +19,7 @@ document.RenderEvents.RenderTextEvent += (sender, args) =>
         for (int idx = 0; idx < args.CodePointGlyphIndexPairs.Length; idx++)
         {
             // Use a reference to item because CodePointWithGlyphIndex is a value type.
-            ref var item = ref args.CodePointGlyphIndexPairs[idx];  // CodePointWithGlyphIndices
+            ref var item = ref args.CodePointGlyphIndexPairs[idx];
 
             // Replace X with U.
             if (item.CodePoint == 'X')

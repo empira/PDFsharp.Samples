@@ -2,9 +2,8 @@
 // See the LICENSE file in the solution root for more information.
 
 using MigraDoc.Rendering;
-using PdfSharp.Fonts;
+using PdfSharp.Pdf;
 using PdfSharp.Quality;
-using PdfSharp.Snippets.Font;
 
 namespace HelloMigraDoc
 {
@@ -12,10 +11,6 @@ namespace HelloMigraDoc
     {
         static void Main()
         {
-            // NET6FIX
-            if (PdfSharp.Capabilities.Build.IsCoreBuild)
-                GlobalFontSettings.FontResolver = new FailsafeFontResolver();
-
             // Create a MigraDoc document.
             var document = Documents.CreateDocument();
 
@@ -25,10 +20,27 @@ namespace HelloMigraDoc
             // Write MigraDoc DDL to a file.
             MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToFile(document, "MigraDoc.mdddl");
 
-            var renderer = new PdfDocumentRenderer()
+#if true
+            var renderer = new PdfDocumentRenderer
             {
-                Document = document
+                Document = document,
+                PdfDocument =
+                {
+                    // Change some settings before rendering the MigraDoc document.
+                    PageLayout = PdfPageLayout.SinglePage,
+                    ViewerPreferences =
+                    {
+                        FitWindow = true
+                    }
+                }
             };
+#else
+            var renderer = new PdfDocumentRenderer();
+            renderer.Document = document;
+            // Change some settings before rendering the MigraDoc document.
+            renderer.PdfDocument.PageLayout = PdfPageLayout.SinglePage;
+            renderer.PdfDocument.ViewerPreferences.FitWindow = true;
+#endif
 
             renderer.RenderDocument();
 

@@ -1,13 +1,10 @@
 // PDFsharp - A .NET library for processing PDF
 // See the LICENSE file in the solution root for more information.
 
-using PdfSharp;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
-using PdfSharp.Fonts;
 using PdfSharp.Quality;
-using PdfSharp.Snippets.Font;
 
 namespace TextLayout
 {
@@ -18,16 +15,9 @@ namespace TextLayout
     /// </summary>
     class Program
     {
-        [STAThread]
         static void Main()
         {
-            // NET6FIX
-            if (Capabilities.Build.IsCoreBuild)
-                GlobalFontSettings.FontResolver = new FailsafeFontResolver();
-
             string filename = PdfFileUtility.GetTempPdfFullFileName("samples-1.5/TextLayout");
-
-            // Note: Text does not fit using Core build and Segoe WP font.
 
             // ReSharper disable StringLiteralTypo
 #if true
@@ -66,11 +56,12 @@ namespace TextLayout
             // ReSharper restore StringLiteralTypo
 
             var document = new PdfDocument();
+            document.PageLayout = PdfPageLayout.SinglePage;
+            document.ViewerPreferences.FitWindow = true;
 
             var page = document.AddPage();
             var gfx = XGraphics.FromPdfPage(page);
             var font = new XFont("Times New Roman", 10, XFontStyleEx.Bold);
-            //var font = new XFont("Segoe WP", 10, XFontStyleEx.Bold);
             var tf = new XTextFormatter(gfx);
 
             var rect = new XRect(40, 100, 250, 232);

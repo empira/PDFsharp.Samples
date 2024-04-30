@@ -6,7 +6,7 @@ namespace UAFeatures
 {
     class FeatureBase
     {
-        public void SaveAndShowDocument(PdfDocument document, string prefix)
+        public static void SaveAndShowDocument(PdfDocument document, string prefix)
         {
             PdfFileUtility.SaveAndShowDocument(document, "UAFeatures/" + prefix);
         }

@@ -100,7 +100,6 @@ namespace HelloMigraDoc
             formattedText = paragraph.AddFormattedText("color");
             formattedText.Color = Colors.Firebrick;
             paragraph.AddText(", the ");
-            // Times New Roman looks smaller than Segoe UI, so we make it a bit larger.
             paragraph.AddFormattedText("font", new Font("Times New Roman", 12));
             paragraph.AddText(".");
             paragraph.AddLineBreak();

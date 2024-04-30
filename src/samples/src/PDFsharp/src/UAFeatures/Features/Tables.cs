@@ -17,9 +17,9 @@ namespace UAFeatures.Features
         PdfDocument _document = default!;
 
         // Create a font (nothing special here).
-        readonly XFont _font = new XFont("Segoe UI", 12, XFontStyleEx.Italic);
-        readonly XFont _fontH1 = new XFont("Segoe UI", 20, XFontStyleEx.Italic);
-        readonly XFont _fontTH = new XFont("Segoe UI", 10, XFontStyleEx.Bold);
+        readonly XFont _font = new XFont("Arial", 12, XFontStyleEx.Italic);
+        readonly XFont _fontH1 = new XFont("Arial", 20, XFontStyleEx.Italic);
+        readonly XFont _fontTH = new XFont("Arial", 10, XFontStyleEx.Bold);
 
         void CreateSimpleTable()
         {

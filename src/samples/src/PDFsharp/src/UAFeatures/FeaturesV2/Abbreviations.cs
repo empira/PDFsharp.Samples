@@ -26,8 +26,8 @@ namespace UAFeatures.FeaturesV2
             var uaManager = UAManager.ForDocument(document);
 
             // Create a font (nothing special here).
-            var font = new XFont("Segoe UI", 12, XFontStyleEx.Italic);
-            var fontH1 = new XFont("Segoe UI", 20, XFontStyleEx.Italic);
+            var font = new XFont("Arial", 12, XFontStyleEx.Italic);
+            var fontH1 = new XFont("Arial", 20, XFontStyleEx.Italic);
 
             // Get structure builder.
             var sb = uaManager.StructureBuilder;

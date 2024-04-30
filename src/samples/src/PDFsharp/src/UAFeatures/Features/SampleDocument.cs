@@ -20,13 +20,13 @@ namespace UAFeatures.Features
         PdfDocument _document = default!;
 
         // Create a font (nothing special here).
-        readonly XFont _fontBig = new XFont("Segoe UI", 12, XFontStyleEx.Italic);
-        readonly XFont _font = new XFont("Segoe UI", 10);
-        readonly XFont _fontHeader = new XFont("Segoe UI", 10, XFontStyleEx.Italic);
-        readonly XFont _fontH1 = new XFont("Segoe UI", 30, XFontStyleEx.Italic);
-        readonly XFont _fontH2 = new XFont("Segoe UI", 20, XFontStyleEx.Underline);
-        readonly XFont _fontH3 = new XFont("Segoe UI", 16, XFontStyleEx.Italic);
-        readonly XFont _fontTH = new XFont("Segoe UI", 10, XFontStyleEx.Bold);
+        readonly XFont _fontBig = new XFont("Arial", 12, XFontStyleEx.Italic);
+        readonly XFont _font = new XFont("Arial ", 10);
+        readonly XFont _fontHeader = new XFont("Arial", 10, XFontStyleEx.Italic);
+        readonly XFont _fontH1 = new XFont("Arial", 30, XFontStyleEx.Italic);
+        readonly XFont _fontH2 = new XFont("Arial", 20, XFontStyleEx.Underline);
+        readonly XFont _fontH3 = new XFont("Arial", 16, XFontStyleEx.Italic);
+        readonly XFont _fontTH = new XFont("Arial", 10, XFontStyleEx.Bold);
 
         void CreatePdf()
         {

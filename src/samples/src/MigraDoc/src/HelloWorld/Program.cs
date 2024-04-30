@@ -9,10 +9,6 @@ using PdfSharp.Pdf;
 using PdfSharp.Quality;
 using PdfSharp.Snippets.Font;
 
-// NET6FIX - will be removed
-if (PdfSharp.Capabilities.Build.IsCoreBuild)
-    GlobalFontSettings.FontResolver = new FailsafeFontResolver();
-
 // Create a MigraDoc document.
 var document = CreateDocument();
 
@@ -24,7 +20,15 @@ var pdfRenderer = new PdfDocumentRenderer
 {
     // Associate the MigraDoc document with a renderer.
     Document = document,
-    PdfDocument = new PdfDocument()
+    PdfDocument =
+    {
+        // Change some settings before rendering the MigraDoc document.
+        PageLayout = PdfPageLayout.SinglePage,
+        ViewerPreferences =
+        {
+            FitWindow = true
+        }
+    }
 };
 
 // Layout and render document to PDF.
@@ -63,7 +67,7 @@ static Document CreateDocument()
     paragraph.Format.Alignment = ParagraphAlignment.Center;
 
     // Add MigraDoc logo.
-    string imagePath = IOUtility.GetAssetsPath(@"migradoc\images\MigraDoc-128x128.png")!;
+    string imagePath = IOUtility.GetAssetsPath(@"migradoc/images/MigraDoc-128x128.png")!;
     document.LastSection.AddImage(imagePath);
 
     return document;

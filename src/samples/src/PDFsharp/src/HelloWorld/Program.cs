@@ -1,17 +1,9 @@
 ﻿// PDFsharp - A .NET library for processing PDF
 // See the LICENSE file in the solution root for more information.
 
-using System.Diagnostics;
-using PdfSharp;
 using PdfSharp.Drawing;
-using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Quality;
-using PdfSharp.Snippets.Font;
-
-// NET6FIX - will be removed
-if (Capabilities.Build.IsCoreBuild)
-    GlobalFontSettings.FontResolver = new FailsafeFontResolver();
 
 // Create a new PDF document.
 var document = new PdfDocument();
@@ -26,8 +18,8 @@ var page = document.AddPage();
 var gfx = XGraphics.FromPdfPage(page);
 
 // Draw two lines with a red default pen.
-var width = page.Width;
-var height = page.Height;
+var width = page.Width.Point;
+var height = page.Height.Point;
 gfx.DrawLine(XPens.Red, 0, 0, width, height);
 gfx.DrawLine(XPens.Red, width, 0, 0, height);
 
@@ -40,7 +32,7 @@ var font = new XFont("Times New Roman", 20, XFontStyleEx.BoldItalic);
 
 // Draw the text.
 gfx.DrawString("Hello, PDFsharp!", font, XBrushes.Black,
-    new XRect(0, 0, page.Width, page.Height), XStringFormats.Center);
+    new XRect(0, 0, page.Width.Point, page.Height.Point), XStringFormats.Center);
 
 // Save the document...
 var filename = PdfFileUtility.GetTempPdfFullFileName("samples/HelloWorldSample");

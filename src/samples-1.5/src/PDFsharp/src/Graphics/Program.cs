@@ -1,11 +1,8 @@
 // PDFsharp - A .NET library for processing PDF
 // See the LICENSE file in the solution root for more information.
 
-using PdfSharp;
-using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Quality;
-using PdfSharp.Snippets.Font;
 
 namespace Graphics
 {
@@ -16,32 +13,34 @@ namespace Graphics
     {
         static void Main()
         {
-            // NET6FIX
-            if (Capabilities.Build.IsCoreBuild)
-                GlobalFontSettings.FontResolver = new FailsafeFontResolver();
-
-            // Create a temporary file.
+            // Create a temporary file by creating a file stream.
             string filename = PdfFileUtility.GetTempPdfFullFileName("samples-1.5/Graphics");
-            s_document = new PdfDocument();
-            s_document.Info.Title = "PDFsharp XGraphic Sample";
-            s_document.Info.Author = "Stefan Lange";
-            s_document.Info.Subject = "Created with code snippets that show the use of graphical functions";
-            s_document.Info.Keywords = "PDFsharp, XGraphics";
+            Document = new PdfDocument(filename);
+            Document.Info.Title = "PDFsharp XGraphic Sample";
+            Document.Info.Author = "Stefan Lange";
+            Document.Info.Subject = "Created with code snippets that show the use of graphical functions";
+            Document.Info.Keywords = "PDFsharp, XGraphics";
+
+            // Show a single page.
+            Document.PageLayout = PdfPageLayout.SinglePage;
+
+            // Let the viewer application fit the page in the windows.
+            Document.ViewerPreferences.FitWindow = true;
 
             // Create demonstration pages.
-            new LinesAndCurves().DrawPage(s_document.AddPage());
-            new Shapes().DrawPage(s_document.AddPage());
-            new Paths().DrawPage(s_document.AddPage());
-            new Text().DrawPage(s_document.AddPage());
-            new Images().DrawPage(s_document.AddPage());
+            new LinesAndCurves().DrawPage(Document.AddPage());
+            new Shapes().DrawPage(Document.AddPage());
+            new Paths().DrawPage(Document.AddPage());
+            new Text().DrawPage(Document.AddPage());
+            new Images().DrawPage(Document.AddPage());
 
-            // Save the s_document...
-            s_document.Save(filename);
+            // Save the document by closing the stream...
+            Document.Close();
             // ...and start a viewer.
             PdfFileUtility.ShowDocument(filename);
         }
 
         // ReSharper disable once InconsistentNaming
-        internal static PdfDocument s_document = null!;
+        internal static PdfDocument Document { get; private set; } = default!;
     }
 }

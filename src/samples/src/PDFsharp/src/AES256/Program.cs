@@ -7,19 +7,11 @@
 */
 
 using PdfSharp.Drawing;
-using PdfSharp.Fonts;
 using PdfSharp.Pdf;
-using PdfSharp;
 using PdfSharp.Pdf.IO;
-using PdfSharp.Snippets.Font;
-using System.Diagnostics;
 using PdfSharp.Diagnostics;
 using PdfSharp.Pdf.Security;
 using PdfSharp.Quality;
-
-// NET6FIX - will be removed
-if (Capabilities.Build.IsCoreBuild)
-    GlobalFontSettings.FontResolver = new FailsafeFontResolver();
 
 const string userPassword = "User";
 
@@ -39,7 +31,7 @@ var page = document.AddPage();
 var gfx = XGraphics.FromPdfPage(page);
 var font = new XFont("Times New Roman", 20, XFontStyleEx.BoldItalic);
 gfx.DrawString("AES 256 bit test", font, XBrushes.Black,
-    new XRect(0, 0, page.Width, page.Height), XStringFormats.Center);
+    new XRect(0, 0, page.Width.Point, page.Height.Point), XStringFormats.Center);
 
 // Set document encryption.
 document.SecuritySettings.UserPassword = userPassword;
@@ -65,7 +57,7 @@ document = PdfReader.Open(filename, userPassword, PdfDocumentOpenMode.Modify);
 page = document.AddPage();
 gfx = XGraphics.FromPdfPage(page);
 gfx.DrawString("2nd page", font, XBrushes.Black,
-    new XRect(0, 0, page.Width, page.Height), XStringFormats.Center);
+    new XRect(0, 0, page.Width.Point, page.Height.Point), XStringFormats.Center);
 
 // Save the document with new name...
 filename = PdfFileUtility.GetTempPdfFullFileName("samples-PDFsharp/AES256-unprotected");
