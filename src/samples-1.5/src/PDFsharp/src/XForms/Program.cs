@@ -75,7 +75,6 @@ namespace XForms
             // Draw the form on the page of the document in its original size.
             gfx.DrawImage(form, 20, 50);
 
-#if true
             // Draw it stretched.
             gfx.DrawImage(form, 300, 100, 250, 40);
 
@@ -86,7 +85,6 @@ namespace XForms
                 gfx.DrawImage(form, 300, 480, 200, 200);
                 gfx.RotateAtTransform(d, new XPoint(300, 480));
             }
-#endif
 
             // Save the document...
             string filename = PdfFileUtility.GetTempPdfFullFileName("samples-1.5/XForms");

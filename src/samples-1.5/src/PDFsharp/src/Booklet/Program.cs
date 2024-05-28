@@ -9,7 +9,7 @@ using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using PdfSharp.Quality;
 
-// By courtesy of Peter Berndts 
+// By courtesy of Peter Berndts.
 
 namespace Booklet
 {
@@ -89,7 +89,7 @@ namespace Booklet
                 page = outputDocument.AddPage();
                 page.Orientation = PageOrientation.Landscape;
                 page.Width = XUnitPt.FromPoint(2 * extWidth);
-                page.Height = XUnitPt.FromPoint( extHeight);
+                page.Height = XUnitPt.FromPoint(extHeight);
 
                 gfx = XGraphics.FromPdfPage(page);
 

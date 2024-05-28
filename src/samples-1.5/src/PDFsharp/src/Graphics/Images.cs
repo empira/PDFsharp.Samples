@@ -28,7 +28,7 @@ namespace Graphics
             DrawImageScaled(gfx, 2);
             DrawImageRotated(gfx, 3);
             DrawImageSheared(gfx, 4);
-            // NET6HACK
+            // Core build does not yet support GIF or TIFF images.
 #if !CORE
             DrawGif(gfx, 5);
 #endif
