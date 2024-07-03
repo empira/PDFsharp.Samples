@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net6.0-windows;net472-windows</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows;net472</TargetFrameworks>
     <DefineConstants>GDI</DefineConstants>
     <EnableWindowsTargeting>True</EnableWindowsTargeting>
   </PropertyGroup>

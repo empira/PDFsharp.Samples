@@ -48,3 +48,4 @@ node_modules
 /nuget.config
 *.log
 *tempfile.*
+launchsettings.json
