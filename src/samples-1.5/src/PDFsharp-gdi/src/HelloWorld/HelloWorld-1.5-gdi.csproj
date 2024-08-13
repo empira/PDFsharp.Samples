@@ -2,10 +2,8 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net6.0-windows;net472</TargetFrameworks>
-    <EnableWindowsTargeting>true</EnableWindowsTargeting>
-    <UseWPF>true</UseWPF>
-    <DefineConstants>WPF</DefineConstants>
+    <TargetFrameworks>net8.0-windows;net462</TargetFrameworks>
+    <EnableWindowsTargeting>True</EnableWindowsTargeting>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PDFsharp-wpf" />
+    <PackageReference Include="PDFsharp-gdi" />
   </ItemGroup>
 
 </Project>

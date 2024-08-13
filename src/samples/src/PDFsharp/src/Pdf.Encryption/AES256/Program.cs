@@ -2,8 +2,8 @@
 // See the LICENSE file in the solution root for more information.
 
 /*
-  This sample demonstrates how to create and open a PDF 1.6 document with 
-  AES 128 bit encryption.
+  This sample demonstrates how to create and open a PDF 2.0 document with 
+  AES 256 bit encryption.
 */
 
 using PdfSharp.Drawing;
@@ -21,7 +21,7 @@ const string userPassword = "User";
 
 // Create a new PDF document.
 var document = new PdfDocument();
-document.Info.Title = "AES 128 bit encryption demonstration";
+document.Info.Title = "AES 256 bit encryption demonstration";
 document.PageLayout = PdfPageLayout.SinglePage;
 
 // Create an empty page in this document.
@@ -30,17 +30,18 @@ var page = document.AddPage();
 // Draw some text.
 var gfx = XGraphics.FromPdfPage(page);
 var font = new XFont("Times New Roman", 20, XFontStyleEx.BoldItalic);
-gfx.DrawString("AES 128 bit test", font, XBrushes.Black,
+gfx.DrawString("AES 256 bit test", font, XBrushes.Black,
     new XRect(0, 0, page.Width.Point, page.Height.Point), XStringFormats.Center);
 
 // Set document encryption.
 document.SecuritySettings.UserPassword = userPassword;
-var securityHandler = document.SecurityHandler ?? NRT.ThrowOnNull<PdfStandardSecurityHandler>();
-securityHandler.SetEncryptionToV4UsingAES();
+var securityHandler = document.SecurityHandler;
+securityHandler.SetEncryptionToV5();
 
 // Save the document...
-var filename = PdfFileUtility.GetTempPdfFullFileName("samples-PDFsharp/AES128");
+var filename = PdfFileUtility.GetTempPdfFullFileName("samples-PDFsharp/AES256");
 document.Save(filename);
+// ...and start a viewer.
 PdfFileUtility.ShowDocument(filename);
 
 // ===================================
@@ -59,6 +60,7 @@ gfx.DrawString("2nd page", font, XBrushes.Black,
     new XRect(0, 0, page.Width.Point, page.Height.Point), XStringFormats.Center);
 
 // Save the document with new name...
-filename = PdfFileUtility.GetTempPdfFullFileName("samples-PDFsharp/AES128-unprotected");
+filename = PdfFileUtility.GetTempPdfFullFileName("samples-PDFsharp/AES256-unprotected");
 document.Save(filename);
+// ...and start a viewer.
 PdfFileUtility.ShowDocument(filename);

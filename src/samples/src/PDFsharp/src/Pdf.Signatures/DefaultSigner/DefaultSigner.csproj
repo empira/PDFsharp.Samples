@@ -1,13 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFrameworks>net8.0;net462</TargetFrameworks>
-    <DefineConstants>CORE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="PDFsharp" />
+    <!-- Unsure if we need this reference -->
+    <PackageReference Include="System.Security.Cryptography.Pkcs" />
   </ItemGroup>
 
 </Project>

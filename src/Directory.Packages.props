@@ -3,8 +3,9 @@
   <Import Condition="Exists('Local.Packages.props')" Project="$([MSBuild]::GetPathOfFileAbove('Local.Packages.props', '$(MSBuildThisFileDirectory)'))" />
 
   <PropertyGroup>
-    <PDFsharp_PackageVersion Condition=" '$(PDFsharp_PackageVersion)'=='' ">6.1.1</PDFsharp_PackageVersion>
-    <NetCore_PackageVersion>6.0.0</NetCore_PackageVersion>
+    <PDFsharp_PackageVersion Condition=" '$(PDFsharp_PackageVersion)'=='' ">6.2.0-preview-1</PDFsharp_PackageVersion>
+    <!--<Logging_PackageVersion>8.0.0</Logging_PackageVersion>-->
+    <Cryptography_PackageVersion>8.0.0</Cryptography_PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,8 +18,12 @@
     <PackageVersion Include="PDFsharp-MigraDoc-GDI" Version="$(PDFsharp_PackageVersion)" />
     <PackageVersion Include="PDFsharp-MigraDoc-WPF" Version="$(PDFsharp_PackageVersion)" />
 
+    <!-- Digital signature packages used by PdfSharp.Cryptography and for testing -->
+    <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="$(Cryptography_PackageVersion)" />
+    <PackageVersion Include="BouncyCastle.Cryptography" Version="2.4.0" />
+
+    <!-- GitVersion used for Semantic Versioning -->
     <PackageVersion Include="GitVersion.MsBuild" Version="5.12.0" />
-    <PackageVersion Include="Microsoft.CSharp" Version="4.7.0" />
 
   </ItemGroup>
 

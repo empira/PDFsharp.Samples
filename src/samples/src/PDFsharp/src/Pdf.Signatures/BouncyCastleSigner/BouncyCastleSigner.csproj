@@ -7,6 +7,9 @@
 
   <ItemGroup>
     <PackageReference Include="PDFsharp" />
+    <!-- Unsure WHY we need this reference. Without this, project compiles, but BouncyCastleSigner crashs. 
+         The BouncyCastle.Cryptography.dll was not in the bin folder. -->
+    <PackageReference Include="BouncyCastle.Cryptography" />
   </ItemGroup>
 
 </Project>

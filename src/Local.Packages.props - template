@@ -1,7 +1,7 @@
 ﻿<Project>
 
   <PropertyGroup>
-    <!--<PDFsharp_PackageVersion>6.1.0-my-branch.123</PDFsharp_PackageVersion>-->
+    <!--<PDFsharp_PackageVersion>6.2.0-my-branch.123</PDFsharp_PackageVersion>-->
     <PDFsharp_PackageVersion>Put your local version number here</PDFsharp_PackageVersion>
   </PropertyGroup>
 

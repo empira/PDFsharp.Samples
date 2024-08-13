@@ -20,7 +20,7 @@ namespace Annotations
             document.PageLayout = PdfPageLayout.SinglePage;
             document.ViewerPreferences.FitWindow = true;
 
-            // Create a font
+            // Create a font.
             var font = new XFont("Verdana", 14);
             //var font = new XFont("Segoe WP", 20, XFontStyleEx.BoldItalic);
 
