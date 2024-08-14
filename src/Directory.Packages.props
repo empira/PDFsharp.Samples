@@ -4,7 +4,6 @@
 
   <PropertyGroup>
     <PDFsharp_PackageVersion Condition=" '$(PDFsharp_PackageVersion)'=='' ">6.2.0-preview-1</PDFsharp_PackageVersion>
-    <!--<Logging_PackageVersion>8.0.0</Logging_PackageVersion>-->
     <Cryptography_PackageVersion>8.0.0</Cryptography_PackageVersion>
   </PropertyGroup>
 

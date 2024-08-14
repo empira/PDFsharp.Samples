@@ -169,6 +169,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefaultSigner", "src\sample
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BouncyCastleSigner", "src\samples\src\PDFsharp\src\Pdf.Signatures\BouncyCastleSigner\BouncyCastleSigner.csproj", "{8B9EDCA7-3021-4F47-A93C-26A05257AD22}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MigraDocDocs", "src\samples\src\MigraDoc\src\MigraDocDocs\MigraDocDocs.csproj", "{62347E6B-5666-4A97-913E-0DB3ABAEE198}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -323,6 +325,10 @@ Global
 		{8B9EDCA7-3021-4F47-A93C-26A05257AD22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B9EDCA7-3021-4F47-A93C-26A05257AD22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B9EDCA7-3021-4F47-A93C-26A05257AD22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62347E6B-5666-4A97-913E-0DB3ABAEE198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62347E6B-5666-4A97-913E-0DB3ABAEE198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62347E6B-5666-4A97-913E-0DB3ABAEE198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62347E6B-5666-4A97-913E-0DB3ABAEE198}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -400,6 +406,7 @@ Global
 		{E7135852-AB58-4653-9FBB-173D423FB5F2} = {EE4079D4-0766-4EAB-970F-9502D1E4BB17}
 		{F52761DE-F5B0-4981-95EF-22182BF97B53} = {4E5D95D0-DD1F-49BC-BD6C-C0A37745A59A}
 		{8B9EDCA7-3021-4F47-A93C-26A05257AD22} = {4E5D95D0-DD1F-49BC-BD6C-C0A37745A59A}
+		{62347E6B-5666-4A97-913E-0DB3ABAEE198} = {FED255D8-F967-4357-BCFA-7C68A11B5700}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25F4AEC1-75C2-4DA6-832A-0F80ADC614B3}
