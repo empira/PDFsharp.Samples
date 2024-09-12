@@ -7,7 +7,7 @@ namespace MigraDocDocs
     {
         const string OptionsTypeChapter = "chapter";
         const string OptionsTypeSample = "sample";
-        
+
         public static void Menu(AutomaticGeneration? automaticGeneration)
         {
             new Menu(Helper.GetDisplayPath("Document object model"),
@@ -47,20 +47,6 @@ namespace MigraDocDocs
                 }
             }
 
-            static class PageControl
-            {
-                // ReSharper disable once MemberHidesStaticFromOuterClass
-                internal static void Menu(AutomaticGeneration? automaticGeneration)
-                {
-                    new Menu(Helper.GetDisplayPath("Document object model/Document/PageControl"),
-                    [
-                        ('1', "Sections", auto => Helper.CreateSample(auto, DOM.Document_.PageControl.Sections)),
-                        ('2', "Page breaks", auto => Helper.CreateSample(auto, DOM.Document_.PageControl.PageBreaks)),
-                        ('3', "Page flow properties", auto => Helper.CreateSample(auto, DOM.Document_.PageControl.PageFlowProperties))
-                    ], OptionsTypeSample, automaticGeneration).Enter();
-                }
-            }
-
             static class Formatting
             {
                 // ReSharper disable once MemberHidesStaticFromOuterClass
@@ -73,6 +59,20 @@ namespace MigraDocDocs
                         ('3', "Own style", auto => Helper.CreateSample(auto, DOM.Document_.Formatting.OwnStyle)),
                         ('4', "Modify base style", auto => Helper.CreateSample(auto, DOM.Document_.Formatting.ModifyBaseStyle)),
                         ('5', "Inheritance", auto => Helper.CreateSample(auto, DOM.Document_.Formatting.Inheritance))
+                    ], OptionsTypeSample, automaticGeneration).Enter();
+                }
+            }
+
+            static class PageControl
+            {
+                // ReSharper disable once MemberHidesStaticFromOuterClass
+                internal static void Menu(AutomaticGeneration? automaticGeneration)
+                {
+                    new Menu(Helper.GetDisplayPath("Document object model/Document/PageControl"),
+                    [
+                        ('1', "Sections", auto => Helper.CreateSample(auto, DOM.Document_.PageControl.Sections)),
+                        ('2', "Page breaks", auto => Helper.CreateSample(auto, DOM.Document_.PageControl.PageBreaks)),
+                        ('3', "Page flow properties", auto => Helper.CreateSample(auto, DOM.Document_.PageControl.PageFlowProperties))
                     ], OptionsTypeSample, automaticGeneration).Enter();
                 }
             }
@@ -91,7 +91,7 @@ namespace MigraDocDocs
                     //('4', "Fields),
                     //('5', "Headers & footers),
                     //('6', "Text frames),
-                    //('7', "Lists),
+                    ('7', "Lists", Lists.Menu),
                     ('8', "Tables", Tables.Menu),
                     //('9', "Images),
                     //('a', "Charts),
@@ -113,6 +113,21 @@ namespace MigraDocDocs
                 }
             }
 
+            static class Lists
+            {
+                // ReSharper disable once MemberHidesStaticFromOuterClass
+                internal static void Menu(AutomaticGeneration? automaticGeneration)
+                {
+                    new Menu(Helper.GetDisplayPath("Document object model/Contents/Lists"),
+                    [
+                        ('1', "Bulleted lists", auto => Helper.CreateSample(auto, DOM.Contents.Lists.BulletedLists.Sample)),
+                        ('2', "Numbered lists", auto => Helper.CreateSample(auto, DOM.Contents.Lists.NumberedLists.Sample)),
+                        ('3', "Mixed lists", auto => Helper.CreateSample(auto, DOM.Contents.Lists.MixedLists.Sample)),
+                        ('4', "Indents", auto => Helper.CreateSample(auto, DOM.Contents.Lists.Indents.Sample))
+                    ], OptionsTypeSample, automaticGeneration).Enter();
+                }
+            }
+
             static class Tables
             {
                 // ReSharper disable once MemberHidesStaticFromOuterClass
@@ -120,7 +135,15 @@ namespace MigraDocDocs
                 {
                     new Menu(Helper.GetDisplayPath("Document object model/Contents/Tables"),
                     [
-                        ('1', "Inheritance", auto => Helper.CreateSample(auto, DOM.Contents.Tables.Inheritance))
+                        ('1', "A simple table", auto => Helper.CreateSample(auto, DOM.Contents.Tables.SimpleTable.Sample)),
+                        ('2', "Row height", auto => Helper.CreateSample(auto, DOM.Contents.Tables.RowHeight.Sample)),
+                        ('3', "Table header", auto => Helper.CreateSample(auto, DOM.Contents.Tables.TableHeader.Sample)),
+                        ('4', "Table positioning", auto => Helper.CreateSample(auto, DOM.Contents.Tables.TablePositioning.Sample)),
+                        ('5', "Text positioning", auto => Helper.CreateSample(auto, DOM.Contents.Tables.TextPositioning.Sample)),
+                        ('6', "Merging cells", auto => Helper.CreateSample(auto, DOM.Contents.Tables.MergingCells.Sample)),
+                        ('7', "Avoiding page breaks", auto => Helper.CreateSample(auto, DOM.Contents.Tables.AvoidingPageBreaks.Sample)),
+                        ('8', "Rounded corners", auto => Helper.CreateSample(auto, DOM.Contents.Tables.RoundedCorners.Sample)),
+                        ('9', "Inheritance", auto => Helper.CreateSample(auto, DOM.Contents.Tables.Inheritance.Sample))
                     ], OptionsTypeSample, automaticGeneration).Enter();
                 }
             }
@@ -137,10 +160,10 @@ namespace MigraDocDocs
                     ('2', "Font", Font.Menu),
                     ('3', "Paragraph", Paragraph.Menu),
                     ('4', "Tab stops", TabStops.Menu),
-                    //('5', "Unit"),
-                    //('6', "Colors"),
-                    //('7', "Shading & FillFormat"),
-                    //('8', "Borders & line formats"),
+                    ('5', "Unit", Unit.Menu),
+                    ('6', "Colors", Colors.Menu),
+                    ('7', "Shading & fill format", ShadingAndFillFormat.Menu),
+                    ('8', "Borders & line format", BordersAndLineFormat.Menu)
                     //('9', "Size & positioning"),
                 ], OptionsTypeChapter, automaticGeneration).Enter();
             }
@@ -187,6 +210,71 @@ namespace MigraDocDocs
                         ('1', "Position & alignment", auto => Helper.CreateSample(auto, DOM.Formats.TabStops.PositionAndAlignment)),
                         ('2', "Leader", auto => Helper.CreateSample(auto, DOM.Formats.TabStops.Leader)),
                         ('3', "Inheritance", auto => Helper.CreateSample(auto, DOM.Formats.TabStops.Inheritance))
+                    ], OptionsTypeSample, automaticGeneration).Enter();
+                }
+            }
+
+            static class Unit
+            {
+                // ReSharper disable once MemberHidesStaticFromOuterClass
+                internal static void Menu(AutomaticGeneration? automaticGeneration)
+                {
+                    new Menu(Helper.GetDisplayPath("Document object model/Formats/Unit"),
+                    [
+                        ('1', "Creating a Unit value", auto => Helper.CreateSample(auto, DOM.Formats.Unit_.CreatingUnitValue)),
+                        ('2', "Getting other measure values", auto => Helper.CreateSample(auto, DOM.Formats.Unit_.GettingOtherMeasureValues)),
+                        ('3', "Changing UnitType", auto => Helper.CreateSample(auto, DOM.Formats.Unit_.ChangingUnitType)),
+                        ('4', "Comparing", auto => Helper.CreateSample(auto, DOM.Formats.Unit_.Comparing))
+                    ], OptionsTypeSample, automaticGeneration).Enter();
+                }
+            }
+
+            static class Colors
+            {
+                // ReSharper disable once MemberHidesStaticFromOuterClass
+                internal static void Menu(AutomaticGeneration? automaticGeneration)
+                {
+                    new Menu(Helper.GetDisplayPath("Document object model/Formats/Colors"),
+                    [
+                        ('1', "Use predefined color", auto => Helper.CreateSample(auto, DOM.Formats.Colors_.UsingPredefinedColors)),
+                        ('2', "From RGB or CMYK value", auto => Helper.CreateSample(auto, DOM.Formats.Colors_.FromRgbOrCmyk)),
+                        ('3', "Working with opacity", auto => Helper.CreateSample(auto, DOM.Formats.Colors_.WorkingWithOpacity)),
+                        ('4', "From hexadecimal value", auto => Helper.CreateSample(auto, DOM.Formats.Colors_.FromHexValue)),
+                        ('5', "Color channels", auto => Helper.CreateSample(auto, DOM.Formats.Colors_.ColorChannels))
+                    ], OptionsTypeSample, automaticGeneration).Enter();
+                }
+            }
+
+            static class ShadingAndFillFormat
+            {
+                // ReSharper disable once MemberHidesStaticFromOuterClass
+                internal static void Menu(AutomaticGeneration? automaticGeneration)
+                {
+                    new Menu(Helper.GetDisplayPath("Document object model/Formats/Shading & fill format"),
+                    [
+                        ('1', "Simple example", auto => Helper.CreateSample(auto, DOM.Formats.ShadingAndFillFormat.SimpleExample.Sample)),
+                        ('2', "Visibility", auto => Helper.CreateSample(auto, DOM.Formats.ShadingAndFillFormat.Visibility.Sample)),
+                        ('3', "Nesting", auto => Helper.CreateSample(auto, DOM.Formats.ShadingAndFillFormat.Nesting.Sample)),
+                        ('4', "SetShading method", auto => Helper.CreateSample(auto, DOM.Formats.ShadingAndFillFormat.SetShadingMethod.Sample))
+                    ], OptionsTypeSample, automaticGeneration).Enter();
+                }
+            }
+
+            static class BordersAndLineFormat
+            {
+                // ReSharper disable once MemberHidesStaticFromOuterClass
+                internal static void Menu(AutomaticGeneration? automaticGeneration)
+                {
+                    new Menu(Helper.GetDisplayPath("Document object model/Formats/Borders & line format"),
+                    [
+                        ('1', "Width & color", auto => Helper.CreateSample(auto, DOM.Formats.BordersAndLineFormat.WidthAndColor.Sample)),
+                        ('2', "Styles", auto => Helper.CreateSample(auto, DOM.Formats.BordersAndLineFormat.Styles.Sample)),
+                        ('3', "Visibility", auto => Helper.CreateSample(auto, DOM.Formats.BordersAndLineFormat.Visibility.Sample)),
+                        ('4', "Nesting", auto => Helper.CreateSample(auto, DOM.Formats.BordersAndLineFormat.Nesting.Sample)),
+                        ('5', "Border distance", auto => Helper.CreateSample(auto, DOM.Formats.BordersAndLineFormat.BorderDistance.Sample)),
+                        ('6', "Single borders", auto => Helper.CreateSample(auto, DOM.Formats.BordersAndLineFormat.SingleBorders.Sample)),
+                        ('7', "SetEdge method", auto => Helper.CreateSample(auto, DOM.Formats.BordersAndLineFormat.SetEdgeMethod.Sample)),
+                        ('8', "Colliding borders", auto => Helper.CreateSample(auto, DOM.Formats.BordersAndLineFormat.CollidingBorders.Sample))
                     ], OptionsTypeSample, automaticGeneration).Enter();
                 }
             }

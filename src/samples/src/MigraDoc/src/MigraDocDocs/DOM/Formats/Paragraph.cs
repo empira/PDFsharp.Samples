@@ -19,7 +19,7 @@ namespace MigraDocDocs.DOM.Formats
         const string Path = $"{Helper.DocsRoot}/Document object model/Formats/Paragraph";
 
         /// <summary>
-        /// Introduction chapter.
+        /// "Access the ParagraphFormat object" chapter.
         /// </summary>
         public static string AccessParagraphFormat()
         {
@@ -97,6 +97,10 @@ namespace MigraDocDocs.DOM.Formats
             var style = document.Styles[StyleNames.Normal];
             style.ParagraphFormat.SpaceAfter = Unit.FromPoint(12);
 
+            const string dummyTextStyleName = "DummyText";
+            style = document.Styles.AddStyle(dummyTextStyleName, StyleNames.Normal);
+            style.Font.Color = Colors.Gray;
+
             // Add a section to the document.
             var section = document.AddSection();
 
@@ -104,7 +108,9 @@ namespace MigraDocDocs.DOM.Formats
 
             // -- Left alignment sample
 
-            var paragraph = section.AddParagraph("This is a left aligned paragraph.");
+            var paragraph = section.AddParagraph("This is a left aligned paragraph. ");
+            paragraph.AddFormattedText("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod" +
+                                       "tempor invidunt ut labore.", dummyTextStyleName);
             var format = paragraph.Format;
 
             // Set the paragraph alignment to Left.
@@ -112,7 +118,9 @@ namespace MigraDocDocs.DOM.Formats
 
             // -- Center alignment sample
 
-            paragraph = section.AddParagraph("This is a center aligned paragraph.");
+            paragraph = section.AddParagraph("This is a center aligned paragraph. ");
+            paragraph.AddFormattedText("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod" +
+                                       "tempor invidunt ut labore.", dummyTextStyleName);
             format = paragraph.Format;
 
             // Set the paragraph alignment to Center.
@@ -120,7 +128,9 @@ namespace MigraDocDocs.DOM.Formats
 
             // -- Right alignment sample
 
-            paragraph = section.AddParagraph("This is a right aligned paragraph.");
+            paragraph = section.AddParagraph("This is a right aligned paragraph. ");
+            paragraph.AddFormattedText("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod" +
+                                       "tempor invidunt ut labore.", dummyTextStyleName);
             format = paragraph.Format;
 
             // Set the paragraph alignment to Right.
@@ -128,7 +138,9 @@ namespace MigraDocDocs.DOM.Formats
 
             // -- Justified alignment sample
 
-            paragraph = section.AddParagraph("This is a justified paragraph.");
+            paragraph = section.AddParagraph("This is a justified paragraph. ");
+            paragraph.AddFormattedText("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod" +
+                                       "tempor invidunt ut labore.", dummyTextStyleName);
             format = paragraph.Format;
 
             // Set the paragraph alignment to Justify.

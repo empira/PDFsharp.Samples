@@ -21,13 +21,9 @@ namespace MigraDocDocs
                 throw new InvalidOperationException("The filenames of the samples must be unique.");
         }
 
-        public void HandleResults()
+        public ICollection<string> GetResultFiles()
         {
-            foreach (var resultFile in _resultFiles)
-            {
-                // Start a viewer.
-                Helper.ShowDocumentIfDebugging(resultFile);
-            }
+            return _resultFiles;
         }
 
         readonly Menu? _callingMenu;

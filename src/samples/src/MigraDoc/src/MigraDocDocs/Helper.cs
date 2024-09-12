@@ -90,9 +90,9 @@ namespace MigraDocDocs
             // For automatic generation collect result files.
             if (automaticGeneration != null)
                 automaticGeneration.AddResultFile(filename);
-            // For manual generation start viewer.
+            // For manual generation handle result.
             else
-                ShowDocumentIfDebugging(filename);
+                Menu.HandleResult(filename);
         }
 
         public static void ShowDocumentIfDebugging(string filename)

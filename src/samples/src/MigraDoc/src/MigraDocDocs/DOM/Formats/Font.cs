@@ -19,7 +19,7 @@ namespace MigraDocDocs.DOM.Formats
         const string Path = $"{Helper.DocsRoot}/Document object model/Formats/Font";
 
         /// <summary>
-        /// Introduction chapter.
+        /// "Access the Font object" chapter.
         /// </summary>
         public static string AccessFont()
         {

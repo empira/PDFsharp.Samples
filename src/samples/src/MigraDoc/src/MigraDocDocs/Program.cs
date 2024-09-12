@@ -13,7 +13,8 @@ namespace MigraDocDocs
 
             Menus.Menu(automaticGeneration);
 
-            automaticGeneration?.HandleResults();
+            if (automaticGeneration != null)
+                Menu.HandleResults(automaticGeneration.GetResultFiles());
         }
     }
 }
