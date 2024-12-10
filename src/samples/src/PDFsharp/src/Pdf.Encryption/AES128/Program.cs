@@ -12,8 +12,14 @@ using PdfSharp.Pdf.IO;
 using PdfSharp.Diagnostics;
 using PdfSharp.Pdf.Security;
 using PdfSharp.Quality;
+using PdfSharp.Fonts;
 
 const string userPassword = "User";
+
+#if CORE
+// Core build does not use Windows fonts, so set a FontResolver that handles the fonts our samples need.
+GlobalFontSettings.FontResolver = new SamplesFontResolver();
+#endif
 
 // =====================================
 // Part 1 - Create an encrypted PDF file

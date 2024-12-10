@@ -12,8 +12,9 @@ namespace HelloMigraDoc
     {
         public static void DefineParagraphs(Document document)
         {
-            var paragraph = document.LastSection.AddParagraph("Paragraph Layout Overview", "Heading1");
-            paragraph.AddBookmark("Paragraphs");
+            var paragraph = document.LastSection.AddParagraph("Paragraph Layout Overview", 
+                StyleNames.Heading1);
+            paragraph.AddBookmark(BookmarkName);
 
             DemonstrateAlignment(document);
             DemonstrateIndent(document);
@@ -23,27 +24,27 @@ namespace HelloMigraDoc
 
         static void DemonstrateAlignment(Document document)
         {
-            document.LastSection.AddParagraph("Alignment", "Heading2");
+            document.LastSection.AddParagraph("Alignment", StyleNames.Heading2);
 
-            document.LastSection.AddParagraph("Left Aligned", "Heading3");
+            document.LastSection.AddParagraph("Left Aligned", StyleNames.Heading3);
 
             var paragraph = document.LastSection.AddParagraph();
             paragraph.Format.Alignment = ParagraphAlignment.Left;
             paragraph.AddText(FillerText.Text);
 
-            document.LastSection.AddParagraph("Right Aligned", "Heading3");
+            document.LastSection.AddParagraph("Right Aligned", StyleNames.Heading3);
 
             paragraph = document.LastSection.AddParagraph();
             paragraph.Format.Alignment = ParagraphAlignment.Right;
             paragraph.AddText(FillerText.Text);
 
-            document.LastSection.AddParagraph("Centered", "Heading3");
+            document.LastSection.AddParagraph("Centered", StyleNames.Heading3);
 
             paragraph = document.LastSection.AddParagraph();
             paragraph.Format.Alignment = ParagraphAlignment.Center;
             paragraph.AddText(FillerText.Text);
 
-            document.LastSection.AddParagraph("Justified", "Heading3");
+            document.LastSection.AddParagraph("Justified", StyleNames.Heading3);
 
             paragraph = document.LastSection.AddParagraph();
             paragraph.Format.Alignment = ParagraphAlignment.Justify;
@@ -52,27 +53,27 @@ namespace HelloMigraDoc
 
         static void DemonstrateIndent(Document document)
         {
-            document.LastSection.AddParagraph("Indent", "Heading2");
+            document.LastSection.AddParagraph("Indent", StyleNames.Heading2);
 
-            document.LastSection.AddParagraph("Left Indent", "Heading3");
+            document.LastSection.AddParagraph("Left Indent", StyleNames.Heading3);
 
             var paragraph = document.LastSection.AddParagraph();
             paragraph.Format.LeftIndent = "2cm";
             paragraph.AddText(FillerText.Text);
 
-            document.LastSection.AddParagraph("Right Indent", "Heading3");
+            document.LastSection.AddParagraph("Right Indent", StyleNames.Heading3);
 
             paragraph = document.LastSection.AddParagraph();
             paragraph.Format.RightIndent = "1in";
             paragraph.AddText(FillerText.Text);
 
-            document.LastSection.AddParagraph("First Line Indent", "Heading3");
+            document.LastSection.AddParagraph("First Line Indent", StyleNames.Heading3);
 
             paragraph = document.LastSection.AddParagraph();
             paragraph.Format.FirstLineIndent = "12mm";
             paragraph.AddText(FillerText.Text);
 
-            document.LastSection.AddParagraph("First Line Negative Indent", "Heading3");
+            document.LastSection.AddParagraph("First Line Negative Indent", StyleNames.Heading3);
 
             paragraph = document.LastSection.AddParagraph();
             paragraph.Format.LeftIndent = "1.5cm";
@@ -82,7 +83,7 @@ namespace HelloMigraDoc
 
         static void DemonstrateFormattedText(Document document)
         {
-            document.LastSection.AddParagraph("Formatted Text", "Heading2");
+            document.LastSection.AddParagraph("Formatted Text", StyleNames.Heading2);
 
             var paragraph = document.LastSection.AddParagraph();
             paragraph.AddText("Text can be formatted ");
@@ -115,9 +116,9 @@ namespace HelloMigraDoc
         static void DemonstrateBordersAndShading(Document document)
         {
             document.LastSection.AddPageBreak();
-            document.LastSection.AddParagraph("Borders and Shading", "Heading2");
+            document.LastSection.AddParagraph("Borders and Shading", StyleNames.Heading2);
 
-            document.LastSection.AddParagraph("Border around Paragraph", "Heading3");
+            document.LastSection.AddParagraph("Border around Paragraph", StyleNames.Heading3);
 
             var paragraph = document.LastSection.AddParagraph();
             paragraph.Format.Borders.Width = 2.5;
@@ -125,17 +126,19 @@ namespace HelloMigraDoc
             paragraph.Format.Borders.Distance = 3;
             paragraph.AddText(FillerText.MediumText);
 
-            document.LastSection.AddParagraph("Shading", "Heading3");
+            document.LastSection.AddParagraph("Shading", StyleNames.Heading3);
 
             paragraph = document.LastSection.AddParagraph();
             paragraph.Format.Shading.Color = Colors.LightCoral;
             paragraph.AddText(FillerText.Text);
 
-            document.LastSection.AddParagraph("Borders & Shading", "Heading3");
+            document.LastSection.AddParagraph("Borders & Shading", StyleNames.Heading3);
 
             paragraph = document.LastSection.AddParagraph();
-            paragraph.Style = "TextBox";
+            paragraph.Style = Styles.TextBoxStyle;
             paragraph.AddText(FillerText.MediumText);
         }
+
+        public const string BookmarkName = "Paragraphs";
     }
 }

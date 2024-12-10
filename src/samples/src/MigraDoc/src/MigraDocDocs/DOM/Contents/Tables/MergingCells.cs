@@ -19,7 +19,7 @@ namespace MigraDocDocs.DOM.Contents.Tables
     static class MergingCells
     {
         [AutoCreatePath]
-        const string Path = "PDFs/Document object model/Contents/Tables";
+        const string Path = $"{Helper.DocsRoot}/Document object model/Contents/Tables";
 
         const string Filename = $"{Path}/MergingCells.pdf";
         const string SampleName = "Merging cells";
@@ -145,7 +145,7 @@ namespace MigraDocDocs.DOM.Contents.Tables
             // Layout and render document to PDF.
             pdfRenderer.RenderDocument();
 
-            // Add sample specific heading with sample project helper function.
+            // Add sample-specific heading with sample project helper function.
             Helper.AddSampleNameHeading(pdfRenderer, Path, SampleName);
 
             // Save the document.

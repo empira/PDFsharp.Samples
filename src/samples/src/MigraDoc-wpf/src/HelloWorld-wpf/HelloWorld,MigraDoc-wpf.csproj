@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFrameworks>net8.0-windows;net462</TargetFrameworks>
+    <DefineConstants>WPF</DefineConstants>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
@@ -20,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="PDFsharp-wpf" />
     <PackageReference Include="PDFsharp-MigraDoc-wpf" />
   </ItemGroup>
 

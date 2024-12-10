@@ -2,6 +2,7 @@
 // See the LICENSE file in the solution root for more information.
 
 using MigraDoc.Rendering;
+using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Quality;
 
@@ -11,18 +12,22 @@ namespace HelloMigraDoc
     {
         static void Main()
         {
+#if CORE
+            // Core build does not use Windows fonts,
+            // so set a FontResolver that handles the fonts our samples need.
+            GlobalFontSettings.FontResolver = new SamplesFontResolver();
+#endif
+
             // Create a MigraDoc document.
             var document = Documents.CreateDocument();
-
-            // Write MigraDoc DDL into a string.
-            var ddl = MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToString(document);
 
             // Write MigraDoc DDL to a file.
             MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToFile(document, "MigraDoc.mdddl");
 
-#if true
-            var renderer = new PdfDocumentRenderer
+            // Create a renderer for the MigraDoc document.
+            var pdfRenderer = new PdfDocumentRenderer
             {
+                // Associate the MigraDoc document with a renderer.
                 Document = document,
                 PdfDocument =
                 {
@@ -34,19 +39,13 @@ namespace HelloMigraDoc
                     }
                 }
             };
-#else
-            var renderer = new PdfDocumentRenderer();
-            renderer.Document = document;
-            // Change some settings before rendering the MigraDoc document.
-            renderer.PdfDocument.PageLayout = PdfPageLayout.SinglePage;
-            renderer.PdfDocument.ViewerPreferences.FitWindow = true;
-#endif
 
-            renderer.RenderDocument();
+            // Layout and render document to PDF.
+            pdfRenderer.RenderDocument();
 
             // Save the document...
             var filename = PdfFileUtility.GetTempPdfFullFileName("samples-MigraDoc/HelloMigraDoc.pdf");
-            renderer.PdfDocument.Save(filename);
+            pdfRenderer.PdfDocument.Save(filename);
 
             // ...and start a viewer.
             PdfFileUtility.ShowDocument(filename);

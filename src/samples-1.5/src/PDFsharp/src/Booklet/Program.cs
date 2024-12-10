@@ -8,6 +8,7 @@ using PdfSharp;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using PdfSharp.Quality;
+using PdfSharp.Fonts;
 
 // By courtesy of Peter Berndts.
 
@@ -22,6 +23,11 @@ namespace Booklet
     {
         static void Main()
         {
+#if CORE
+            // Core build does not use Windows fonts, so set a FontResolver that handles the fonts our samples need.
+            GlobalFontSettings.FontResolver = new SamplesFontResolver();
+#endif
+
             // Get a fresh copy of the sample PDF file
             string filename = "Portable Document Format.pdf";
             File.Copy(Path.Combine(IOUtility.GetAssetsPath("archives/samples-1.5/PDFs")!, filename),

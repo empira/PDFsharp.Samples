@@ -19,7 +19,7 @@ namespace MigraDocDocs.DOM.Contents.Lists
     static class BulletedLists
     {
         [AutoCreatePath]
-        const string Path = "PDFs/Document object model/Contents/Lists";
+        const string Path = $"{Helper.DocsRoot}/Document object model/Contents/Lists";
         
         const string Filename = $"{Path}/BulletedLists.pdf";
         const string SampleName = "Bulleted lists";
@@ -37,21 +37,21 @@ namespace MigraDocDocs.DOM.Contents.Lists
 
             // --- Sample content
 
-            // Style for list level 1
+            // Style for list level 1.
             const string listLevel1StyleName = "ListLevel1";
             style = document.Styles.AddStyle(listLevel1StyleName, StyleNames.List);
             style.ParagraphFormat.ListInfo.ListType = ListType.BulletList1;
             style.ParagraphFormat.ListInfo.NumberPosition = Unit.Zero;
             style.ParagraphFormat.LeftIndent = Unit.FromCentimeter(0.5);
 
-            // Style for list level 2
+            // Style for list level 2.
             const string listLevel2StyleName = "ListLevel2";
             style = document.Styles.AddStyle(listLevel2StyleName, StyleNames.List);
             style.ParagraphFormat.ListInfo.ListType = ListType.BulletList2;
             style.ParagraphFormat.ListInfo.NumberPosition = Unit.FromCentimeter(0.5);
             style.ParagraphFormat.LeftIndent = Unit.FromCentimeter(1);
 
-            // Style for list level 3
+            // Style for list level 3.
             const string listLevel3StyleName = "ListLevel3";
             style = document.Styles.AddStyle(listLevel3StyleName, StyleNames.List);
             style.ParagraphFormat.ListInfo.ListType = ListType.BulletList3;
@@ -152,7 +152,7 @@ namespace MigraDocDocs.DOM.Contents.Lists
             // Layout and render document to PDF.
             pdfRenderer.RenderDocument();
 
-            // Add sample specific heading with sample project helper function.
+            // Add sample-specific heading with sample project helper function.
             Helper.AddSampleNameHeading(pdfRenderer, Path, SampleName);
 
             // Save the document.

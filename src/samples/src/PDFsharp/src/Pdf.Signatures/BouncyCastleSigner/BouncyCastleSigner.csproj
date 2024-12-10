@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFrameworks>net8.0;net462</TargetFrameworks>
+    <DefineConstants>CORE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

@@ -43,20 +43,24 @@ namespace HelloMigraDoc
             section.PageSetup.OddAndEvenPagesHeaderFooter = true;
             section.PageSetup.StartingNumber = 1;
 
+            // For the odd page header, add a paragraph with right aligned text due to the given tab.
+            // See definition of style StyleNames.Header.
             var header = section.Headers.Primary;
             header.AddParagraph("\tOdd Page Header");
 
+            // For the even page header, add a paragraph with left aligned text due to the missing tab.
+            // See definition of style StyleNames.Header.
             header = section.Headers.EvenPage;
             header.AddParagraph("Even Page Header");
 
-            // Create a paragraph with centered page number. See definition of style "Footer".
+            // Create a paragraph with centered page number. See definition of style StyleNames.Footer.
             var paragraph = new Paragraph();
             paragraph.AddTab();
             paragraph.AddPageField();
 
             // Add paragraph to footer for odd pages.
             section.Footers.Primary.Add(paragraph);
-            // Add clone of paragraph to footer for odd pages. Cloning is necessary because an object must
+            // Add clone of paragraph to footer for even pages. Cloning is necessary because an object must
             // not belong to more than one other object. If you forget cloning an exception is thrown.
             section.Footers.EvenPage.Add(paragraph.Clone());
         }

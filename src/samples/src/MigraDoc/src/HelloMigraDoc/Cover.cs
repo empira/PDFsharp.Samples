@@ -19,7 +19,8 @@ namespace HelloMigraDoc
             var paragraph = section.AddParagraph();
             paragraph.Format.SpaceAfter = "3cm";
 
-            var image = section.AddImage(IOUtility.GetAssetsPath("migradoc/images/MigraDoc-landscape.png")!);
+            var imagePath = IOUtility.GetAssetsPath("migradoc/images/MigraDoc-landscape.png")!;
+            var image = section.AddImage(imagePath);
             image.Width = "10cm";
 
             paragraph = section.AddParagraph("A sample document that demonstrates the\ncapabilities of ");
@@ -32,10 +33,11 @@ namespace HelloMigraDoc
             paragraph = section.AddParagraph("Rendering date: ");
             paragraph.AddDateField();
 
-            _ = section.AddParagraph($"Version: {MigraDocRenderingBuildInformation.GitSemVer}");
-            _ = section.AddParagraph($"Branch: {MigraDocRenderingBuildInformation.BranchName}");
-            _ = section.AddParagraph($"Assembly: {MigraDocRenderingBuildInformation.AssemblyTitle}");
-            paragraph = section.AddParagraph($"Platform: ");
+            section.AddParagraph($"Version: {MigraDocRenderingBuildInformation.GitSemVer}");
+            section.AddParagraph($"Branch: {MigraDocRenderingBuildInformation.BranchName}");
+            section.AddParagraph($"Assembly: {MigraDocRenderingBuildInformation.AssemblyTitle}");
+            
+            paragraph = section.AddParagraph("Platform: ");
             var platform = MigraDocRenderingBuildInformation.TargetPlatform;
             if (String.IsNullOrEmpty(platform))
                 paragraph.AddFormattedText("(none)", TextFormat.Italic);

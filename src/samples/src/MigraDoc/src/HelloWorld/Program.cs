@@ -9,6 +9,12 @@ using PdfSharp.Pdf;
 using PdfSharp.Quality;
 using PdfSharp.Snippets.Font;
 
+#if CORE
+// Core build does not use Windows fonts,
+// so set a FontResolver that handles the fonts our samples need.
+GlobalFontSettings.FontResolver = new SamplesFontResolver();
+#endif
+
 // Create a MigraDoc document.
 var document = CreateDocument();
 
@@ -37,6 +43,7 @@ pdfRenderer.RenderDocument();
 // Save the document...
 var filename = PdfFileUtility.GetTempPdfFullFileName("samples-MigraDoc/HelloWorldMigraDoc");
 pdfRenderer.PdfDocument.Save(filename);
+
 // ...and start a viewer.
 PdfFileUtility.ShowDocument(filename);
 

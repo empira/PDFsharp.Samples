@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFrameworks>net8.0-windows;net462</TargetFrameworks>
+    <DefineConstants>GDI</DefineConstants>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
 
@@ -19,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="PDFsharp-gdi" />
     <PackageReference Include="PDFsharp-MigraDoc-gdi" />
   </ItemGroup>
 

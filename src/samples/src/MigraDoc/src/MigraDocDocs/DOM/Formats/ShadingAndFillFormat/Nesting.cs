@@ -19,7 +19,7 @@ namespace MigraDocDocs.DOM.Formats.ShadingAndFillFormat
     static class Nesting
     {
         [AutoCreatePath]
-        const string Path = "PDFs/Document object model/Formats/ShadingAndFillFormat";
+        const string Path = $"{Helper.DocsRoot}/Document object model/Formats/ShadingAndFillFormat";
         
         const string Filename = $"{Path}/Nesting.pdf";
         const string SampleName = "Nesting";
@@ -107,7 +107,7 @@ namespace MigraDocDocs.DOM.Formats.ShadingAndFillFormat
             // Layout and render document to PDF.
             pdfRenderer.RenderDocument();
 
-            // Add sample specific heading with sample project helper function.
+            // Add sample-specific heading with sample project helper function.
             Helper.AddSampleNameHeading(pdfRenderer, Path, SampleName);
 
             // Save the document.

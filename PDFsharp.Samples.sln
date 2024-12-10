@@ -171,6 +171,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BouncyCastleSigner", "src\s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MigraDocDocs", "src\samples\src\MigraDoc\src\MigraDocDocs\MigraDocDocs.csproj", "{62347E6B-5666-4A97-913E-0DB3ABAEE198}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pdf.Fonts", "Pdf.Fonts", "{DDA0ABC1-C0F6-4D5E-8885-58881D62C582}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubstitutingFontResolverDemo", "src\samples\src\PDFsharp\src\Pdf.Fonts\PlatformAwareFontResolver\SubstitutingFontResolverDemo.csproj", "{A8DD8B84-31D7-48D7-ACF3-96DD455D16DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -329,6 +333,10 @@ Global
 		{62347E6B-5666-4A97-913E-0DB3ABAEE198}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62347E6B-5666-4A97-913E-0DB3ABAEE198}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62347E6B-5666-4A97-913E-0DB3ABAEE198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8DD8B84-31D7-48D7-ACF3-96DD455D16DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8DD8B84-31D7-48D7-ACF3-96DD455D16DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8DD8B84-31D7-48D7-ACF3-96DD455D16DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8DD8B84-31D7-48D7-ACF3-96DD455D16DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -407,6 +415,8 @@ Global
 		{F52761DE-F5B0-4981-95EF-22182BF97B53} = {4E5D95D0-DD1F-49BC-BD6C-C0A37745A59A}
 		{8B9EDCA7-3021-4F47-A93C-26A05257AD22} = {4E5D95D0-DD1F-49BC-BD6C-C0A37745A59A}
 		{62347E6B-5666-4A97-913E-0DB3ABAEE198} = {FED255D8-F967-4357-BCFA-7C68A11B5700}
+		{DDA0ABC1-C0F6-4D5E-8885-58881D62C582} = {61F0B46F-B2CB-472F-8B26-6E78A8E9D45E}
+		{A8DD8B84-31D7-48D7-ACF3-96DD455D16DC} = {DDA0ABC1-C0F6-4D5E-8885-58881D62C582}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25F4AEC1-75C2-4DA6-832A-0F80ADC614B3}

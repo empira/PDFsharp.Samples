@@ -5,6 +5,7 @@ using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Quality;
+using PdfSharp.Fonts;
 
 namespace TextLayout
 {
@@ -17,6 +18,11 @@ namespace TextLayout
     {
         static void Main()
         {
+#if CORE
+            // Core build does not use Windows fonts, so set a FontResolver that handles the fonts our samples need.
+            GlobalFontSettings.FontResolver = new SamplesFontResolver();
+#endif
+
             string filename = PdfFileUtility.GetTempPdfFullFileName("samples-1.5/TextLayout");
 
             // ReSharper disable StringLiteralTypo

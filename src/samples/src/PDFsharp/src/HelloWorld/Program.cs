@@ -2,8 +2,14 @@
 // See the LICENSE file in the solution root for more information.
 
 using PdfSharp.Drawing;
+using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Quality;
+
+#if CORE
+// Core build does not use Windows fonts, so set a FontResolver that handles the fonts our samples need.
+GlobalFontSettings.FontResolver = new SamplesFontResolver();
+#endif
 
 // Create a new PDF document.
 var document = new PdfDocument();

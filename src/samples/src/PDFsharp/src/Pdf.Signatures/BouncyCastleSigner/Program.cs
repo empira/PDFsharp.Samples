@@ -4,9 +4,15 @@
 using System.Security.Cryptography.X509Certificates;
 using BouncyCastleSigner;
 using PdfSharp.Drawing;
+using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.Signatures;
 using PdfSharp.Quality;
+
+#if CORE
+// Core build does not use Windows fonts, so set a FontResolver that handles the fonts our samples need.
+GlobalFontSettings.FontResolver = new SamplesFontResolver();
+#endif
 
 // The minimum assets version required.
 // Our test .pfx file is stored in the assets.

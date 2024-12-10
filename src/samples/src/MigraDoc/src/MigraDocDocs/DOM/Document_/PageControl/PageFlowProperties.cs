@@ -11,152 +11,21 @@ using MigraDoc.DocumentObjectModel;
 using MigraDoc.Rendering;
 using PdfSharp.Pdf;
 
-namespace MigraDocDocs.DOM.Document_
+namespace MigraDocDocs.DOM.Document_.PageControl
 {
-    static class PageControl
+    /// <summary>
+    /// "Page flow properties" chapter.
+    /// </summary>
+    static class PageFlowProperties
     {
         [AutoCreatePath]
         const string Path = $"{Helper.DocsRoot}/Document object model/Document/PageControl";
 
-        /// <summary>
-        /// Sections chapter.
-        /// </summary>
-        public static string Sections()
+        const string Filename = $"{Path}/PageFlowProperties.pdf";
+        const string SampleName = "Page flow properties";
+
+        public static string Sample()
         {
-            const string filename = $"{Path}/Sections.pdf";
-            const string sampleName = "Sections";
-
-            // --- Code needed for sample
-
-            // Create a new MigraDoc document.
-            var document = new Document();
-
-            // --- Sample content
-
-            // Add a section to the document.
-            var section = document.AddSection();
-            section.AddParagraph("First section.\n" +
-                                 "It starts on the first page.");
-
-            // Add a new section, which shall start on the next page.
-            section = document.AddSection();
-            section.AddParagraph("Second section.\n" +
-                                 "It starts on the second page (the next one), as there’s no SectionStart defined.");
-
-            // Add a new section, which shall start on an even page.
-            section = document.AddSection();
-            section.PageSetup.SectionStart = BreakType.BreakEvenPage;
-            section.AddParagraph("Third section.\n" +
-                                 "It starts on the fourth page instead of the third, as it shall start on an even page.");
-
-            // Add a new section, which shall start on an odd page.
-            section = document.AddSection();
-            section.PageSetup.SectionStart = BreakType.BreakOddPage;
-            section.AddParagraph("Fourth section.\n" +
-                                 "It starts on the fifth page (the next one), as it is already an odd page.");
-
-            // Add a new section, which shall start on an odd page.
-            section = document.AddSection();
-            section.PageSetup.SectionStart = BreakType.BreakOddPage;
-            section.AddParagraph("Fifth section.\n" +
-                                 "It starts on the seventh page instead of the sixth, as it shall start on an odd page.");
-
-            // Add a new section, which shall start on an even page.
-            section = document.AddSection();
-            section.PageSetup.SectionStart = BreakType.BreakEvenPage;
-            section.AddParagraph("Sixth section.\n" +
-                                 "It starts on the eighth page (the next one), as it is already an even page.");
-
-            // --- Rendering
-
-            // Create a renderer for the MigraDoc document.
-            var pdfRenderer = new PdfDocumentRenderer
-            {
-                // Associate the MigraDoc document with a renderer.
-                Document = document,
-                // Let the PDF viewer show this PDF with full pages.
-                PdfDocument =
-                {
-                    PageLayout = PdfPageLayout.SinglePage,
-                    ViewerPreferences =
-                    {
-                        FitWindow = true
-                    }
-                }
-            };
-
-            // Layout and render document to PDF.
-            pdfRenderer.RenderDocument();
-
-            // Add sample specific heading with sample project helper function.
-            Helper.AddSampleNameHeading(pdfRenderer, Path, sampleName);
-
-            // Save the document.
-            pdfRenderer.Save(filename);
-
-            return filename;
-        }
-
-        /// <summary>
-        /// "Page breaks" chapter.
-        /// </summary>
-        public static string PageBreaks()
-        {
-            const string filename = $"{Path}/PageBreaks.pdf";
-            const string sampleName = "Page breaks";
-
-            // --- Code needed for sample
-
-            // Create a new MigraDoc document.
-            var document = new Document();
-
-            // Add a section to the document.
-            var section = document.AddSection();
-
-            section.AddParagraph("Text before the page break.");
-
-            section.AddPageBreak();
-
-            section.AddParagraph("Text after the page break.");
-
-            // --- Rendering
-
-            // Create a renderer for the MigraDoc document.
-            var pdfRenderer = new PdfDocumentRenderer
-            {
-                // Associate the MigraDoc document with a renderer.
-                Document = document,
-                // Let the PDF viewer show this PDF with full pages.
-                PdfDocument =
-                {
-                    PageLayout = PdfPageLayout.SinglePage,
-                    ViewerPreferences =
-                    {
-                        FitWindow = true
-                    }
-                }
-            };
-
-            // Layout and render document to PDF.
-            pdfRenderer.RenderDocument();
-
-            // Add sample specific heading with sample project helper function.
-            Helper.AddSampleNameHeading(pdfRenderer, Path, sampleName);
-
-            // Save the document.
-            pdfRenderer.Save(filename);
-
-            return filename;
-        }
-
-        /// <summary>
-        /// "Page flow properties" chapter.
-        /// </summary>
-        public static string PageFlowProperties()
-        {
-            const string filename = $"{Path}/PageFlowProperties.pdf";
-            const string sampleName = "Page flow properties";
-
             // --- Code needed for sample
 
             // Create a new MigraDoc document.
@@ -186,7 +55,7 @@ namespace MigraDocDocs.DOM.Document_
 
             // Add a section to the document.
             var section = document.AddSection();
-            
+
             // Add paragraph to ensure that 50 lines fit on a page.
             section.AddParagraph("The next Paragraph with line numbers ensures, that exactly 50 lines fit on one page.\n" +
                                  "This makes it easier to force and understand page breaks of this sample.");
@@ -361,13 +230,13 @@ namespace MigraDocDocs.DOM.Document_
             // Layout and render document to PDF.
             pdfRenderer.RenderDocument();
 
-            // Add sample specific heading with sample project helper function.
-            Helper.AddSampleNameHeading(pdfRenderer, Path, sampleName);
+            // Add sample-specific heading with sample project helper function.
+            Helper.AddSampleNameHeading(pdfRenderer, Path, SampleName);
 
             // Save the document.
-            pdfRenderer.Save(filename);
+            pdfRenderer.Save(Filename);
 
-            return filename;
+            return Filename;
         }
     }
 }

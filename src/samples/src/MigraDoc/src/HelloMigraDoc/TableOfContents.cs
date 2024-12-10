@@ -13,8 +13,8 @@ namespace HelloMigraDoc
         public static void DefineTableOfContents(Document document)
         {
             var section = document.LastSection;
-
             section.AddPageBreak();
+
             var paragraph = section.AddParagraph("Table of Contents");
             paragraph.Format.Font.Size = 14;
             paragraph.Format.Font.Bold = true;
@@ -22,22 +22,22 @@ namespace HelloMigraDoc
             paragraph.Format.OutlineLevel = OutlineLevel.Level1;
 
             paragraph = section.AddParagraph();
-            paragraph.Style = "TOC";
-            var hyperlink = paragraph.AddHyperlink("Paragraphs");
+            paragraph.Style = Styles.TocStyle;
+            var hyperlink = paragraph.AddHyperlink(Paragraphs.BookmarkName);
             hyperlink.AddText("Paragraphs\t");
-            hyperlink.AddPageRefField("Paragraphs");
+            hyperlink.AddPageRefField(Paragraphs.BookmarkName);
 
             paragraph = section.AddParagraph();
-            paragraph.Style = "TOC";
-            hyperlink = paragraph.AddHyperlink("Tables");
+            paragraph.Style = Styles.TocStyle;
+            hyperlink = paragraph.AddHyperlink(Tables.BookmarkName);
             hyperlink.AddText("Tables\t");
-            hyperlink.AddPageRefField("Tables");
+            hyperlink.AddPageRefField(Tables.BookmarkName);
 
             paragraph = section.AddParagraph();
-            paragraph.Style = "TOC";
-            hyperlink = paragraph.AddHyperlink("Charts");
+            paragraph.Style = Styles.TocStyle;
+            hyperlink = paragraph.AddHyperlink(Charts.BookmarkName);
             hyperlink.AddText("Charts\t");
-            hyperlink.AddPageRefField("Charts");
+            hyperlink.AddPageRefField(Charts.BookmarkName);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace MigraDocDocs.DOM.Formats.ShadingAndFillFormat
     static class SetShadingMethod
     {
         [AutoCreatePath]
-        const string Path = "PDFs/Document object model/Formats/ShadingAndFillFormat";
+        const string Path = $"{Helper.DocsRoot}/Document object model/Formats/ShadingAndFillFormat";
 
         const string Filename = $"{Path}/SetShadingMethod.pdf";
         const string SampleName = "SetShading method";
@@ -30,9 +30,6 @@ namespace MigraDocDocs.DOM.Formats.ShadingAndFillFormat
 
             // Create a new MigraDoc document.
             var document = new Document();
-
-            // Set Normal style.
-            var style = document.Styles[StyleNames.Normal];
 
             // Add a section to the document.
             var section = document.AddSection();
@@ -123,7 +120,7 @@ namespace MigraDocDocs.DOM.Formats.ShadingAndFillFormat
             // Layout and render document to PDF.
             pdfRenderer.RenderDocument();
 
-            // Add sample specific heading with sample project helper function.
+            // Add sample-specific heading with sample project helper function.
             Helper.AddSampleNameHeading(pdfRenderer, Path, SampleName);
 
             // Save the document.

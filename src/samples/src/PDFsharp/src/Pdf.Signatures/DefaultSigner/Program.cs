@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using DefaultSigner;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
+using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.Signatures;
 using PdfSharp.Quality;
@@ -18,6 +19,11 @@ IOUtility.EnsureAssetsVersion(requiredAssets);
 // This is done async and therefore, we use 'await document.SaveAsync(filename)' here.
 // Using the sync version of 'Save' also works, but it blocks the current thread during the web request.
 
+#if CORE
+// Core build does not use Windows fonts, so set a FontResolver that handles the fonts our samples need.
+GlobalFontSettings.FontResolver = new SamplesFontResolver();
+#endif
+
 // Create a signed document without a timestamp (which is very common).
 await CreateSignedDocument();
 
@@ -28,7 +34,7 @@ await CreateSignedDocument(true);
 #endif
 return;
 
-static async Task CreateSignedDocument(bool addTimestamp =false)
+static async Task CreateSignedDocument(bool addTimestamp = false)
 {
     var font = new XFont("Verdana", 10, XFontStyleEx.Regular);
     var fontHeader = new XFont("Verdana", 18, XFontStyleEx.Regular);
@@ -73,7 +79,7 @@ static X509Certificate2 GetCertificate()
 {
     var certFolder = IOUtility.GetAssetsPath("pdfsharp-6.x/signatures") ??
                      throw new InvalidOperationException("Call Download-Assets.ps1 before running the tests.");
-    var pfxFile = Path.Combine(certFolder , "test-cert_rsa_1024.pfx");
+    var pfxFile = Path.Combine(certFolder, "test-cert_rsa_1024.pfx");
     var rawData = File.ReadAllBytes(pfxFile);
 
     // This code is for demonstration only. Do not use password literals for real certificates in source code.

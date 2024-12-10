@@ -19,7 +19,7 @@ namespace MigraDocDocs.DOM.Formats.BordersAndLineFormat
     static class CollidingBorders
     {
         [AutoCreatePath]
-        const string Path = "PDFs/Document object model/Formats/BordersAndLineFormat";
+        const string Path = $"{Helper.DocsRoot}/Document object model/Formats/BordersAndLineFormat";
         
         const string Filename = $"{Path}/CollidingBorders.pdf";
         const string SampleName = "Colliding borders";
@@ -30,9 +30,6 @@ namespace MigraDocDocs.DOM.Formats.BordersAndLineFormat
 
             // Create a new MigraDoc document.
             var document = new Document();
-
-            // Set Normal style.
-            var style = document.Styles[StyleNames.Normal];
 
             // Add a section to the document.
             var section = document.AddSection();
@@ -185,7 +182,7 @@ namespace MigraDocDocs.DOM.Formats.BordersAndLineFormat
             // Layout and render document to PDF.
             pdfRenderer.RenderDocument();
 
-            // Add sample specific heading with sample project helper function.
+            // Add sample-specific heading with sample project helper function.
             Helper.AddSampleNameHeading(pdfRenderer, Path, SampleName);
 
             // Save the document.

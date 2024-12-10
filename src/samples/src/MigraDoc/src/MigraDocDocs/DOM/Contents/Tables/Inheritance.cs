@@ -20,7 +20,7 @@ namespace MigraDocDocs.DOM.Contents.Tables
     static class Inheritance
     {
         [AutoCreatePath]
-        const string Path = "PDFs/Document object model/Contents/Tables";
+        const string Path = $"{Helper.DocsRoot}/Document object model/Contents/Tables";
 
         const string filename = $"{Path}/Inheritance.pdf";
         const string sampleName = "Inheritance";
@@ -234,7 +234,7 @@ namespace MigraDocDocs.DOM.Contents.Tables
             // Layout and render document to PDF.
             pdfRenderer.RenderDocument();
 
-            // Add sample specific heading with sample project helper function.
+            // Add sample-specific heading with sample project helper function.
             Helper.AddSampleNameHeading(pdfRenderer, Path, sampleName);
 
             // Save the document.

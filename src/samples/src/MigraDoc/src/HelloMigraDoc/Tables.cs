@@ -13,8 +13,9 @@ namespace HelloMigraDoc
     {
         public static void DefineTables(Document document)
         {
-            var paragraph = document.LastSection!.AddParagraph("Table Overview", "Heading1");
-            paragraph.AddBookmark("Tables");
+            var paragraph = document.LastSection.AddParagraph("Table Overview", 
+                StyleNames.Heading1);
+            paragraph.AddBookmark(BookmarkName);
 
             DemonstrateSimpleTable(document);
             DemonstrateAlignment(document);
@@ -23,7 +24,7 @@ namespace HelloMigraDoc
 
         public static void DemonstrateSimpleTable(Document document)
         {
-            document.LastSection.AddParagraph("Simple Tables", "Heading2");
+            document.LastSection.AddParagraph("Simple Tables", StyleNames.Heading2);
 
             var table = new Table
             {
@@ -40,6 +41,7 @@ namespace HelloMigraDoc
 
             var row = table.AddRow();
             row.Shading.Color = Colors.PaleGoldenrod;
+            row.HeadingFormat = true;
             var cell = row.Cells[0];
             cell.AddParagraph("Itemus");
             cell = row.Cells[1];
@@ -64,7 +66,7 @@ namespace HelloMigraDoc
 
         public static void DemonstrateAlignment(Document document)
         {
-            document.LastSection.AddParagraph("Cell Alignment", "Heading2");
+            document.LastSection.AddParagraph("Cell Alignment", StyleNames.Heading2);
 
             var table = document.LastSection.AddTable();
             table.Borders.Visible = true;
@@ -105,21 +107,16 @@ namespace HelloMigraDoc
 
         public static void DemonstrateCellMerge(Document document)
         {
-            document.LastSection.AddParagraph("Cell Merge", "Heading2");
+            document.LastSection.AddParagraph("Cell Merge", StyleNames.Heading2);
 
             var table = document.LastSection.AddTable();
             table.Borders.Visible = true;
             table.TopPadding = 5;
             table.BottomPadding = 5;
 
-            var column = table.AddColumn();
-            column.Format.Alignment = ParagraphAlignment.Left;
-
-            column = table.AddColumn();
-            column.Format.Alignment = ParagraphAlignment.Center;
-
-            column = table.AddColumn();
-            column.Format.Alignment = ParagraphAlignment.Right;
+            table.AddColumn();
+            table.AddColumn();
+            table.AddColumn();
 
             table.Rows.Height = 35;
 
@@ -128,12 +125,13 @@ namespace HelloMigraDoc
             row.Cells[0].MergeRight = 1;
 
             row = table.AddRow();
-            row.VerticalAlignment = VerticalAlignment.Bottom;
             row.Cells[0].MergeDown = 1;
             row.Cells[0].VerticalAlignment = VerticalAlignment.Bottom;
             row.Cells[0].AddParagraph("Merge Down");
 
             table.AddRow();
         }
+
+        public const string BookmarkName = "Tables";
     }
 }

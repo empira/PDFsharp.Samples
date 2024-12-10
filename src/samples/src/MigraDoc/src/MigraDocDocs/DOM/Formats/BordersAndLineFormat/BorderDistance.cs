@@ -19,7 +19,7 @@ namespace MigraDocDocs.DOM.Formats.BordersAndLineFormat
     static class BorderDistance
     {
         [AutoCreatePath]
-        const string Path = "PDFs/Document object model/Formats/BordersAndLineFormat";
+        const string Path = $"{Helper.DocsRoot}/Document object model/Formats/BordersAndLineFormat";
         
         const string Filename = $"{Path}/BorderDistance.pdf";
         const string SampleName = "Border distance";
@@ -115,7 +115,7 @@ namespace MigraDocDocs.DOM.Formats.BordersAndLineFormat
             // Layout and render document to PDF.
             pdfRenderer.RenderDocument();
 
-            // Add sample specific heading with sample project helper function.
+            // Add sample-specific heading with sample project helper function.
             Helper.AddSampleNameHeading(pdfRenderer, Path, SampleName);
 
             // Save the document.

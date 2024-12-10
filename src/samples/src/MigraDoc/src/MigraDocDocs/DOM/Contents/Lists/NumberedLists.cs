@@ -19,7 +19,7 @@ namespace MigraDocDocs.DOM.Contents.Lists
     static class NumberedLists
     {
         [AutoCreatePath]
-        const string Path = "PDFs/Document object model/Contents/Lists";
+        const string Path = $"{Helper.DocsRoot}/Document object model/Contents/Lists";
         
         const string Filename = $"{Path}/NumberedLists.pdf";
         const string SampleName = "Numbered lists";
@@ -37,38 +37,38 @@ namespace MigraDocDocs.DOM.Contents.Lists
 
             // --- Sample content
 
-            // Style for list level 1
+            // Style for list level 1.
             const string listLevel1StyleName = "ListLevel1";
             style = document.Styles.AddStyle(listLevel1StyleName, StyleNames.List);
             style.ParagraphFormat.ListInfo.ListType = ListType.NumberList1;
             style.ParagraphFormat.ListInfo.NumberPosition = Unit.Zero;
             style.ParagraphFormat.LeftIndent = Unit.FromCentimeter(0.5);
 
-            // Special style for list level 1, first line
+            // Special style for list level 1, first line.
             const string listLevel1Line1StyleName = "ListLevel1Line1";
             style = document.Styles.AddStyle(listLevel1Line1StyleName, listLevel1StyleName);
             style.ParagraphFormat.ListInfo.ContinuePreviousList = false;
 
-            // style for list level 2
+            // style for list level 2.
             const string listLevel2StyleName = "ListLevel2";
             style = document.Styles.AddStyle(listLevel2StyleName, StyleNames.List);
             style.ParagraphFormat.ListInfo.ListType = ListType.NumberList2;
             style.ParagraphFormat.ListInfo.NumberPosition = Unit.FromCentimeter(0.5);
             style.ParagraphFormat.LeftIndent = Unit.FromCentimeter(1);
 
-            // Special style for list level 2, first line
+            // Special style for list level 2, first line.
             const string listLevel2Line1StyleName = "ListLevel2Line1";
             style = document.Styles.AddStyle(listLevel2Line1StyleName, listLevel2StyleName);
             style.ParagraphFormat.ListInfo.ContinuePreviousList = false;
 
-            // Style for list level 3
+            // Style for list level 3.
             const string listLevel3StyleName = "ListLevel3";
             style = document.Styles.AddStyle(listLevel3StyleName, StyleNames.List);
             style.ParagraphFormat.ListInfo.ListType = ListType.NumberList3;
             style.ParagraphFormat.ListInfo.NumberPosition = Unit.FromCentimeter(1);
             style.ParagraphFormat.LeftIndent = Unit.FromCentimeter(1.5);
 
-            // Special style for list level 3, first line
+            // Special style for list level 3, first line.
             const string listLevel3Line1StyleName = "ListLevel3Line1";
             style = document.Styles.AddStyle(listLevel3Line1StyleName, listLevel3StyleName);
             style.ParagraphFormat.ListInfo.ContinuePreviousList = false;
@@ -172,7 +172,7 @@ namespace MigraDocDocs.DOM.Contents.Lists
             // Layout and render document to PDF.
             pdfRenderer.RenderDocument();
 
-            // Add sample specific heading with sample project helper function.
+            // Add sample-specific heading with sample project helper function.
             Helper.AddSampleNameHeading(pdfRenderer, Path, SampleName);
 
             // Save the document.

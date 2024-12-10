@@ -85,7 +85,22 @@ namespace MigraDocDocs
 
         public static void CreateSample(AutomaticGeneration? automaticGeneration, Func<string> createSample)
         {
-            var filename = createSample();
+            string filename;
+            try
+            {
+                filename = createSample();
+            }
+            catch (Exception e)
+            {
+                var name = GetSampleNameFromFunction(createSample);
+
+                Console.WriteLine($"Sample \"{name}\" could not be created due to an exception:\n" +
+                                  $"{e.Message}");
+                Console.WriteLine("Press any key to continue.");
+                Console.WriteLine();
+                Console.ReadKey();
+                return;
+            }
 
             // For automatic generation collect result files.
             if (automaticGeneration != null)
@@ -93,6 +108,53 @@ namespace MigraDocDocs
             // For manual generation handle result.
             else
                 Menu.HandleResult(filename);
+        }
+
+        static string GetSampleNameFromFunction(Func<string> createSample)
+        {
+            try
+            {
+                var type = createSample.Method.DeclaringType;
+                if (type != null)
+                {
+                    // Get value of SampleName constant.
+                    var sampleNameInfo = type.GetField("SampleName", BindingFlags.Static | BindingFlags.NonPublic);
+                    if (sampleNameInfo != null)
+                    {
+                        var sampleNameObj = sampleNameInfo.GetValue(null);
+                        if (sampleNameObj is string sampleName)
+                        {
+                            // Get value of Path constant.
+                            var pathInfo = type.GetField("Path", BindingFlags.Static | BindingFlags.NonPublic);
+                            if (pathInfo != null)
+                            {
+                                var pathObj = pathInfo.GetValue(null);
+                                if (pathObj is string path)
+                                {
+                                    if (path.StartsWith("PDFs"))
+                                        path = "MigraDoc" + path[4..];
+                                    path = path.Replace("/", " / ");
+
+                                    // Return sample name with path.
+                                    sampleName = $"{path} / {sampleName}";
+                                    return sampleName;
+                                }
+                            }
+
+                            // Return sample name without path.
+                            return sampleName;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                // Nothing 
+            }
+
+            // Return method name.
+            var name = createSample.Method.Name;
+            return name;
         }
 
         public static void ShowDocumentIfDebugging(string filename)
