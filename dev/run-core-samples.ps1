@@ -1,6 +1,6 @@
 # Run Core samples
 
-# This file runs the Core samples that use .NET 6.0.
+# This file runs the Core samples that use .NET 8.0.
 # The samples should run under Windows, WSL2, and Linux.
 # This file runs under PowerShell Core 7.0 or higher.
 
@@ -11,19 +11,23 @@
     # src/samples/src/PDFsharp/src/PdfRef2LicenseRemover/bin/Debug/net6.0/PdfRef2LicenseRemover.exe
     # src/samples/src/PDFsharp/src/UAFeatures/bin/Debug/net6.0/UAFeatures.exe
 
-    "src/samples/src/MigraDoc/src/HelloMigraDoc/bin/Debug/net6.0/HelloMigraDoc.dll"
-    "src/samples/src/MigraDoc/src/HelloWorld/bin/Debug/net6.0/HelloWorld,MigraDoc.dll"
-    "src/samples/src/PDFsharp/src/AES128/bin/Debug/net6.0/AES128.dll"
-    "src/samples/src/PDFsharp/src/AES256/bin/Debug/net6.0/AES256.dll"
-    "src/samples/src/PDFsharp/src/HelloWorld/bin/Debug/net6.0/HelloWorld,PDFsharp.dll"
+    "src/samples/src/MigraDoc/src/HelloMigraDoc/bin/Debug/net8.0/HelloMigraDoc.dll"
+    "src/samples/src/MigraDoc/src/HelloWorld/bin/Debug/net8.0/HelloWorld,MigraDoc.dll"
+    "src/samples/src/PDFsharp/src/Pdf.Encryption/AES128/bin/Debug/net8.0/AES128.dll"
+    "src/samples/src/PDFsharp/src/Pdf.Encryption/AES256/bin/Debug/net8.0/AES256.dll"
+    "src/samples/src/PDFsharp/src/Pdf.Fonts/PlatformAwareFontResolver/bin/Debug/net8.0/SubstitutingFontResolver.dll"
+    "src/samples/src/PDFsharp/src/Pdf.Signatures/BouncyCastleSigner/bin/Debug/net8.0/BouncyCastleSigner.dll"
+    "src/samples/src/PDFsharp/src/Pdf.Signatures/DefaultSigner/bin/Debug/net8.0/DefaultSigner.dll"
+    "src/samples/src/PDFsharp/src/HelloWorld/bin/Debug/net8.0/HelloWorld,PDFsharp.dll"
+    "src/samples/src/PDFsharp/src/RenderEvents/bin/Debug/net8.0/RenderEvents.dll"
 
-    "src/samples-1.5/src/PDFsharp/src/Annotations/bin/Debug/net6.0/Annotation.dll"
-    "src/samples-1.5/src/PDFsharp/src/Booklet/bin/Debug/net6.0/Booklet.dll"
-    "src/samples-1.5/src/PDFsharp/src/Bookmarks/bin/Debug/net6.0/Bookmarks.dll"
-    "src/samples-1.5/src/PDFsharp/src/Graphics/bin/Debug/net6.0/Graphics.dll"
-    "src/samples-1.5/src/PDFsharp/src/HelloWorld/bin/Debug/net6.0/HelloWorld.dll"
-    "src/samples-1.5/src/PDFsharp/src/TextLayout/bin/Debug/net6.0/TextLayout.dll"
-    "src/samples-1.5/src/PDFsharp/src/XForms/bin/Debug/net6.0/XForms.dll"
+    "src/samples-1.5/src/PDFsharp/src/Annotations/bin/Debug/net8.0/Annotation.dll"
+    "src/samples-1.5/src/PDFsharp/src/Booklet/bin/Debug/net8.0/Booklet.dll"
+    "src/samples-1.5/src/PDFsharp/src/Bookmarks/bin/Debug/net8.0/Bookmarks.dll"
+    "src/samples-1.5/src/PDFsharp/src/Graphics/bin/Debug/net8.0/Graphics.dll"
+    "src/samples-1.5/src/PDFsharp/src/HelloWorld/bin/Debug/net8.0/HelloWorld-1.5.dll"
+    "src/samples-1.5/src/PDFsharp/src/TextLayout/bin/Debug/net8.0/TextLayout.dll"
+    "src/samples-1.5/src/PDFsharp/src/XForms/bin/Debug/net8.0/XForms.dll"
 )
 
 $root = "$PSScriptRoot/../"

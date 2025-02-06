@@ -9,6 +9,11 @@ const string programName = "samples-PDFsharp/RenderEvents";
 
 // http://localhost:8094/PDFsharp/Topics/Drawing/RenderEvents.html  #CHECK_BEFORE_RELEASE
 
+#if CORE
+// Core build does not use Windows fonts, so set a FontResolver that handles the fonts our samples need.
+GlobalFontSettings.FontResolver = new SamplesFontResolver();
+#endif
+
 var document = PdfDocUtility.CreateNewPdfDocument(); // ("Render events")
 var page = document.AddPage();  // PdfDocTools.AddPageAndGetGraphics(Render...
 var gfx = XGraphics.FromPdfPage(page);

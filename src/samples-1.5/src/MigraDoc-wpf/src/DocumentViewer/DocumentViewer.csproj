@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <DefineConstants>WPF</DefineConstants>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <EnableWindowsTargeting>True</EnableWindowsTargeting>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\..\..\samples\src\MigraDoc\src\HelloMigraDoc\Charts.cs" Link="HelloMigraDoc\Charts.cs" />
+    <Compile Include="..\..\..\..\..\samples\src\MigraDoc\src\HelloMigraDoc\Cover.cs" Link="HelloMigraDoc\Cover.cs" />
+    <Compile Include="..\..\..\..\..\samples\src\MigraDoc\src\HelloMigraDoc\Documents.cs" Link="HelloMigraDoc\Documents.cs" />
+    <Compile Include="..\..\..\..\..\samples\src\MigraDoc\src\HelloMigraDoc\FillerText.cs" Link="HelloMigraDoc\FillerText.cs" />
+    <Compile Include="..\..\..\..\..\samples\src\MigraDoc\src\HelloMigraDoc\Paragraphs.cs" Link="HelloMigraDoc\Paragraphs.cs" />
+    <Compile Include="..\..\..\..\..\samples\src\MigraDoc\src\HelloMigraDoc\Styles.cs" Link="HelloMigraDoc\Styles.cs" />
+    <Compile Include="..\..\..\..\..\samples\src\MigraDoc\src\HelloMigraDoc\TableOfContents.cs" Link="HelloMigraDoc\TableOfContents.cs" />
+    <Compile Include="..\..\..\..\..\samples\src\MigraDoc\src\HelloMigraDoc\Tables.cs" Link="HelloMigraDoc\Tables.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PDFsharp-wpf" />
+    <PackageReference Include="PDFsharp-MigraDoc-WPF" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="HelloMigraDoc\" />
+  </ItemGroup>
+
+</Project>

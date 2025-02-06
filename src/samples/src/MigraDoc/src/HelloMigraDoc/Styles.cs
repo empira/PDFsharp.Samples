@@ -2,6 +2,7 @@
 // See the LICENSE file in the solution root for more information.
 
 using MigraDoc.DocumentObjectModel;
+using TabAlignment = MigraDoc.DocumentObjectModel.TabAlignment;
 
 namespace HelloMigraDoc
 {

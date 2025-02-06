@@ -1,7 +1,7 @@
-# 23-03-22
+# 25-02-06
 assembly-versioning-scheme: MajorMinorPatch
 # PDFSHARP_BUILD_VERSION are the days since 2005-01-01. #CHECK_BEFORE_RELEASE
-assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{env:PDFSHARP_BUILD_VERSION ?? 7284}'
+assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{env:PDFSHARP_BUILD_VERSION ?? 7341}'
 mode: Mainline
 assembly-informational-format: '{NuGetVersion}'
 branches:

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!--<TargetFrameworks>net8.0-windows;net462</TargetFrameworks>-->
+    <TargetFrameworks>net462</TargetFrameworks>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <DefineConstants>GDI</DefineConstants>
+    <EnableWindowsTargeting>True</EnableWindowsTargeting>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PDFsharp-gdi" />
+    <PackageReference Include="System.Resources.Extensions" />
+  </ItemGroup>
+
+</Project>

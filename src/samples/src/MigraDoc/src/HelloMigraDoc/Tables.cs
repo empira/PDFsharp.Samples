@@ -3,6 +3,7 @@
 
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
+using BorderStyle = MigraDoc.DocumentObjectModel.BorderStyle;
 
 namespace HelloMigraDoc
 {

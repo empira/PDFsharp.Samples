@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFrameworks>net8.0;net462</TargetFrameworks>
-    <AssemblyName>HelloWorld,PDFsharp</AssemblyName>
+    <AssemblyName>SubstitutingFontResolver</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
