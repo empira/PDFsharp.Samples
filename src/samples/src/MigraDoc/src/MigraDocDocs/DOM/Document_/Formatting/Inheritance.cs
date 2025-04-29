@@ -38,7 +38,7 @@ namespace MigraDocDocs.DOM.Document_.Formatting
 
             // Set Normal style.
             var style = document.Styles[StyleNames.Normal];
-            style.Font.Name = "times new roman";
+            style.Font.Name = "Times New Roman";
             style.Font.Size = Unit.FromPoint(12);
 
             // Set Heading1 style.
