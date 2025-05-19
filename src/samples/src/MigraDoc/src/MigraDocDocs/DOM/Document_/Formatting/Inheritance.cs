@@ -38,7 +38,7 @@ namespace MigraDocDocs.DOM.Document_.Formatting
 
             // Set Normal style.
             var style = document.Styles[StyleNames.Normal];
-            style.Font.Name = "times new roman";
+            style.Font.Name = "Times New Roman";
             style.Font.Size = Unit.FromPoint(12);
 
             // Set Heading1 style.
@@ -46,7 +46,7 @@ namespace MigraDocDocs.DOM.Document_.Formatting
             style.Font.Size = Unit.FromPoint(20);
             style.Font.Bold = true;
             style.ParagraphFormat.SpaceBefore = Unit.FromPoint(20); // Overrides 'Unit.FromPoint(12)' from Normal.
-                                                                    // 'Font.Name = "times new roman"' will be inherited from Normal.
+                                                                    // 'Font.Name = "Times New Roman"' will be inherited from Normal.
 
             // Set Heading2 style.
             style = document.Styles[StyleNames.Heading2];
@@ -55,13 +55,13 @@ namespace MigraDocDocs.DOM.Document_.Formatting
             style.ParagraphFormat.SpaceBefore = Unit.FromPoint(10); // Overrides 'Unit.FromPoint(20)' from Heading1.
             style.ParagraphFormat.SpaceAfter = Unit.FromPoint(10);
             // 'Font.Bold = true' will be inherited from Heading1.
-            // 'Font.Name = "times new roman"' will be inherited from Heading1 > Normal.
+            // 'Font.Name = "Times New Roman"' will be inherited from Heading1 > Normal.
 
             // Add a section to the document.
             var section = document.AddSection();
 
             section.AddParagraph("Example for inheritance.");
-            // 'Font.Name = "times new roman"' will be inherited from Normal.
+            // 'Font.Name = "Times New Roman"' will be inherited from Normal.
             // 'Font.Size = Unit.FromPoint(12)' will be inherited from Normal.
 
             var paragraph1 = section.AddParagraph("Heading 1: ");
@@ -70,7 +70,7 @@ namespace MigraDocDocs.DOM.Document_.Formatting
             // 'Font.Size = Unit.FromPoint(20)' will be inherited from Heading1.
             // 'Font.Bold = true' will be inherited from Heading1.
             // 'ParagraphFormat.SpaceBefore = Unit.FromPoint(20)' will be inherited from Heading1.
-            // 'Font.Name = "times new roman"' will be inherited from Heading1 > Normal.
+            // 'Font.Name = "Times New Roman"' will be inherited from Heading1 > Normal.
 
             var formattedText1 = paragraph1.AddFormattedText("Red");
             formattedText1.Color = Colors.Red;
@@ -78,7 +78,7 @@ namespace MigraDocDocs.DOM.Document_.Formatting
             // 'Font.Underline' = will be inherited from paragraph1.
             // 'Font.Size = Unit.FromPoint(20)' will be inherited from paragraph1 > Heading1.
             // 'ParagraphFormat.SpaceBefore = Unit.FromPoint(20)' from paragraph1 > Heading1 is not relevant for formattedText1.
-            // 'Font.Name = "times new roman"' will be inherited from paragraph1 > Heading1 > Normal.
+            // 'Font.Name = "Times New Roman"' will be inherited from paragraph1 > Heading1 > Normal.
 
             var paragraph2 = section.AddParagraph("Heading 2: ");
             paragraph2.Style = StyleNames.Heading2;
@@ -87,7 +87,7 @@ namespace MigraDocDocs.DOM.Document_.Formatting
             // 'ParagraphFormat.SpaceBefore = Unit.FromPoint(10)' will be inherited from Heading2.
             // 'ParagraphFormat.SpaceAfter = Unit.FromPoint(10)' will be inherited from Heading2.
             // 'Font.Bold = true' will be inherited from Heading2 > Heading1.
-            // 'Font.Name = "times new roman"' will be inherited from Heading2 > Heading1 > Normal.
+            // 'Font.Name = "Times New Roman"' will be inherited from Heading2 > Heading1 > Normal.
 
             var formattedText2 = paragraph2.AddFormattedText("Blue");
             formattedText2.Color = Colors.Blue;
@@ -96,18 +96,18 @@ namespace MigraDocDocs.DOM.Document_.Formatting
             // 'ParagraphFormat.SpaceBefore = Unit.FromPoint(10)' from Heading2 is not relevant for formattedText2.
             // 'ParagraphFormat.SpaceAfter = Unit.FromPoint(10)' from Heading2 is not relevant for formattedText2.
             // 'Font.Bold = true' will be inherited from Heading2 > Heading1.
-            // 'Font.Name = "times new roman"' will be inherited from Heading2 > Heading1 > Normal.
+            // 'Font.Name = "Times New Roman"' will be inherited from Heading2 > Heading1 > Normal.
 
             var paragraph3 = section.AddParagraph("Whole text in ");
             paragraph3.Style = StyleNames.Normal;
             paragraph3.Format.Font.Color = Colors.Green;
-            // 'Font.Name = "times new roman"' will be inherited from Normal.
+            // 'Font.Name = "Times New Roman"' will be inherited from Normal.
             // 'Font.Size = Unit.FromPoint(12)' will be inherited from Normal.
 
             var formattedText3 = paragraph3.AddFormattedText("green");
             formattedText3.Bold = true;
             // 'Font.Color = Colors.Green' will be inherited from paragraph3.
-            // 'Font.Name = "times new roman"' will be inherited from Normal.
+            // 'Font.Name = "Times New Roman"' will be inherited from Normal.
             // 'Font.Size = Unit.FromPoint(12)' will be inherited from Normal.
 
             // --- Rendering

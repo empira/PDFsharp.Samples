@@ -1,9 +1,9 @@
 ﻿# PDFsharp & MigraDoc Samples
 
-Version **6.2.0 Preview 3**  
-Published **2025-02-06**
+Version **6.2.0**  
+Published **2025-05-19**
 
-This is a preview release of the samples solution for PDFsharp and MigraDoc.
+This is a stable release of the samples solution for PDFsharp and MigraDoc.
 For more information see
 
 [PDFsharp samples](https://docs.pdfsharp.net/PDFsharp/Samples/About.html)

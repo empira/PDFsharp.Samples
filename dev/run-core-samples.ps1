@@ -48,7 +48,14 @@ function RunAssembly($testDll)
                 Remove-Item "*.pdf" -ErrorAction Ignore
 
                 # Run the assembly.
-                dotnet "$root$testDll"
+                if ($testDll.EndsWith(".dll")) {
+                    # Use "dotnet" to start DLL.
+                    dotnet "$root$testDll"
+                }
+                else {
+                    # Call .EXE directly.
+                    & "$root$testDll"
+                }
 
                 if ($IsLinux) {
                     # Give assembly some time.
@@ -78,6 +85,11 @@ function RunAssembly($testDll)
 # Main
 
 foreach ($assembly in $assemblyList) {
+    # Run .NET 8 version.
     RunAssembly $assembly
+    if (!$IsLinux) {
+        $assembly462 = $assembly.Replace("/net8.0/", "/net462/").Replace(".dll", ".exe")
+        # Run .NET Framework 4.6.2 version.
+        RunAssembly $assembly462
+    }
 }
-

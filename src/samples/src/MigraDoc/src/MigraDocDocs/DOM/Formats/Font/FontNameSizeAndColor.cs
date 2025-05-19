@@ -40,7 +40,7 @@ namespace MigraDocDocs.DOM.Formats.Font
             // --- Sample content
 
             // Set the font name.
-            font.Name = "times new roman";
+            font.Name = "Times New Roman";
 
             // Set the font size.
             font.Size = Unit.FromPoint(14);
