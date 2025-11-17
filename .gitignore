@@ -49,3 +49,4 @@ node_modules
 *.log
 *tempfile.*
 launchsettings.json
+/src/Local.Build.props

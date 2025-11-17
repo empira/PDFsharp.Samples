@@ -88,8 +88,8 @@ namespace GraphicsPreview
                 250, 300, 350, 400, 450, 500, 600, 700, 800
             };
 
-            if (currentZoom <= (int)Zoom.Mininum && !larger)
-                return (int)Zoom.Mininum;
+            if (currentZoom <= (int)Zoom.Minimum && !larger)
+                return (int)Zoom.Minimum;
             if (currentZoom >= (int)Zoom.Maximum && larger)
                 return (int)Zoom.Maximum;
 
