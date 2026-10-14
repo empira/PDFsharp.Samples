@@ -9,6 +9,9 @@ namespace UAFeatures
     {
         static void Main(string[] _)
         {
+            // Set AGPL license.
+            PdfSharpLicense.SetAgplLicense();
+
             Console.WriteLine("PDFsharp UA Feature Tester\n");
 
             if (Capabilities.Build.IsCoreBuild)

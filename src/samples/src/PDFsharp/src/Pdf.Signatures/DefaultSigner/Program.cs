@@ -3,12 +3,16 @@
 
 using System.Security.Cryptography.X509Certificates;
 using DefaultSigner;
+using PdfSharp;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.Signatures;
 using PdfSharp.Quality;
+
+// Set AGPL license.
+PdfSharpLicense.SetAgplLicense();
 
 // The minimum assets version required.
 // Our test .pfx file is stored in the assets.

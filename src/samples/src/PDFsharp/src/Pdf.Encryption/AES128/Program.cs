@@ -6,15 +6,19 @@
   AES 128 bit encryption.
 */
 
+using PdfSharp;
+using PdfSharp.Diagnostics;
 using PdfSharp.Drawing;
+using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
-using PdfSharp.Diagnostics;
 using PdfSharp.Pdf.Security;
 using PdfSharp.Quality;
-using PdfSharp.Fonts;
 
 const string userPassword = "User";
+
+// Set AGPL license.
+PdfSharpLicense.SetAgplLicense();
 
 #if CORE
 // Core build does not use Windows fonts, so set a FontResolver that handles the fonts our samples need.

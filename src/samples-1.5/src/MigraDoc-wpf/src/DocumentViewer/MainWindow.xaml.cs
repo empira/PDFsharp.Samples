@@ -3,8 +3,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using Microsoft.Win32;
-using MigraDoc.Rendering;
 using MigraDoc.DocumentObjectModel.IO;
+using MigraDoc.Rendering;
+using PdfSharp;
 
 namespace DocumentViewer
 {
@@ -16,6 +17,9 @@ namespace DocumentViewer
         public MainWindow()
         {
             InitializeComponent();
+
+            // Set AGPL license.
+            PdfSharpLicense.SetAgplLicense();
 
             // Create a new MigraDoc document
             var document = SampleDocuments.CreateSample1();

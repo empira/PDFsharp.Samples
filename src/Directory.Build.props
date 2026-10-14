@@ -39,15 +39,15 @@
     <DefineConstants>$(DefineConstants);FEWER_FRAMEWORKS</DefineConstants>
 
     <!-- Frameworks for DLLs and EXE -->
-    <PDFsharpTargetFrameworks_Library>net8.0</PDFsharpTargetFrameworks_Library>
-    <PDFsharpTargetFrameworks_Exe>net8.0</PDFsharpTargetFrameworks_Exe>
-    <PDFsharpTargetFrameworks_Windows>net8.0-windows</PDFsharpTargetFrameworks_Windows>
-    <PDFsharpTargetFrameworks_NewExe>net8.0</PDFsharpTargetFrameworks_NewExe>
+    <PDFsharpTargetFrameworks_Library>net10.0</PDFsharpTargetFrameworks_Library>
+    <PDFsharpTargetFrameworks_Exe>net10.0</PDFsharpTargetFrameworks_Exe>
+    <PDFsharpTargetFrameworks_Windows>net10.0-windows</PDFsharpTargetFrameworks_Windows>
+    <PDFsharpTargetFrameworks_NewExe>net10.0</PDFsharpTargetFrameworks_NewExe>
 
     <!-- Frameworks for test projects and EXE -->
-    <PDFsharpTargetFrameworks_Tests_Library>net8.0</PDFsharpTargetFrameworks_Tests_Library>
-    <PDFsharpTargetFrameworks_Tests_Exe>net8.0</PDFsharpTargetFrameworks_Tests_Exe>
-    <PDFsharpTargetFrameworks_Tests_Windows>net8.0-windows</PDFsharpTargetFrameworks_Tests_Windows>
+    <PDFsharpTargetFrameworks_Tests_Library>net10.0</PDFsharpTargetFrameworks_Tests_Library>
+    <PDFsharpTargetFrameworks_Tests_Exe>net10.0</PDFsharpTargetFrameworks_Tests_Exe>
+    <PDFsharpTargetFrameworks_Tests_Windows>net10.0-windows</PDFsharpTargetFrameworks_Tests_Windows>
   </PropertyGroup>
 
   <PropertyGroup>

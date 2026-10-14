@@ -3,11 +3,15 @@
 
 using System.Security.Cryptography.X509Certificates;
 using BouncyCastleSigner;
+using PdfSharp;
 using PdfSharp.Drawing;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.Signatures;
 using PdfSharp.Quality;
+
+// Set AGPL license.
+PdfSharpLicense.SetAgplLicense();
 
 #if CORE
 // Core build does not use Windows fonts, so set a FontResolver that handles the fonts our samples need.

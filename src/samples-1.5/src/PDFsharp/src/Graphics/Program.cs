@@ -1,6 +1,7 @@
 // PDFsharp - A .NET library for processing PDF
 // See the LICENSE file in the solution root for more information.
 
+using PdfSharp;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Quality;
@@ -14,6 +15,9 @@ namespace Graphics
     {
         static void Main()
         {
+            // Set AGPL license.
+            PdfSharpLicense.SetAgplLicense();
+
 #if CORE
             // Core build does not use Windows fonts, so set a FontResolver that handles the fonts our samples need.
             GlobalFontSettings.FontResolver = new SamplesFontResolver();

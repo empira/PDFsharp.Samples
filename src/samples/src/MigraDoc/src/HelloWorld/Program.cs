@@ -4,10 +4,14 @@
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Fields;
 using MigraDoc.Rendering;
+using PdfSharp;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Quality;
 using PdfSharp.Snippets.Font;
+
+// Set AGPL license.
+PdfSharpLicense.SetAgplLicense();
 
 #if CORE
 // Core build does not use Windows fonts,

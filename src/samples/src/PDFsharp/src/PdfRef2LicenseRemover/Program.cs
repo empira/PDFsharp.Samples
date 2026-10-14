@@ -18,6 +18,7 @@
   ===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===​===
 */
 
+using PdfSharp;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 
@@ -25,6 +26,9 @@ using PdfSharp.Pdf.IO;
 const string folder = @"C:\Users\StLa\Desktop\PDFsharp\";
 const string file = "ISO_32000-2_2020(en).pdf";
 const string fileNew = "ISO_32000-2_2020(en)-no-license-info.pdf";
+
+// Set AGPL license.
+PdfSharpLicense.SetAgplLicense();
 
 PdfDocument document = default!;
 try

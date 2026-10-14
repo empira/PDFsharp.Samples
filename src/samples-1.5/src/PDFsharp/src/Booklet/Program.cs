@@ -23,6 +23,9 @@ namespace Booklet
     {
         static void Main()
         {
+            // Set AGPL license.
+            PdfSharpLicense.SetAgplLicense();
+
 #if CORE
             // Core build does not use Windows fonts, so set a FontResolver that handles the fonts our samples need.
             GlobalFontSettings.FontResolver = new SamplesFontResolver();

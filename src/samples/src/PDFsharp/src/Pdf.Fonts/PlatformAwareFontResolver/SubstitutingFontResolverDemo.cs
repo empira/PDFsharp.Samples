@@ -1,11 +1,15 @@
 ﻿// PDFsharp - A .NET library for processing PDF
 // See the LICENSE file in the solution root for more information.
 
+using PdfSharp;
 using PdfSharp.Drawing;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Quality;
 using PdfSharp.Snippets.Font;
+
+// Set AGPL license.
+PdfSharpLicense.SetAgplLicense();
 
 GlobalFontSettings.FontResolver = new SubstitutingFontResolver.SubstitutingFontResolver();
 GlobalFontSettings.FallbackFontResolver = new FailsafeFontResolver();
